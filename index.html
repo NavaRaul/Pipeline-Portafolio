@@ -456,6 +456,12 @@
     }
     tbody tr:hover{background:var(--color-hover)}
     tbody tr:last-child td{border-bottom:none}
+    .projects-list-table{ table-layout:fixed; }
+    .projects-list-table thead th{ width:16.66%; }
+    .projects-list-table thead th:last-child{ width:16.7%; }
+    .projects-list-table tbody td{ word-wrap:break-word; overflow-wrap:break-word; }
+    .project-name-link{ display:block; color:inherit; font-weight:600; }
+    .project-name-link:hover{ color:var(--color-primary); }
     .t-actions{display:flex;gap:8px;justify-content:flex-end}
     .link{
       color:var(--color-primary);
@@ -1536,29 +1542,32 @@
 
     const db = {
       projects: [
-        seedProject("TYA-240", "Terreno Poniente (oportunidad)", "Guadalajara, Jal.", "Por definir", STAGES.LANDBANK),
-        seedProject("TYA-239", "Lote Industrial Norte", "El Salto, Jal.", "Industrial", STAGES.LANDBANK),
-        seedProject("TYA-238", "Predio Mixto Centro Sur", "Tlaquepaque, Jal.", "Por definir", STAGES.LANDBANK),
-        seedProject("TYA-241", "Residencial Norte", "Guadalajara, Jal.", "Vertical", STAGES.PERFIL),
-        seedProject("TYA-245", "Condominio Las Palmas", "Zapopan, Jal.", "Vertical", STAGES.PERFIL),
-        seedProject("TYA-242", "Mixto Centro", "Zapopan, Jal.", "Mixto", STAGES.PREFACT),
-        seedProject("TYA-246", "Residencial Valle Real", "Zapopan, Jal.", "Horizontal", STAGES.PREFACT),
-        seedProject("TYA-247", "Plaza Comercial Periférico", "Guadalajara, Jal.", "Mixto", STAGES.PREFACT),
-        seedProject("TYA-243", "Lotes Sur", "Tlajomulco, Jal.", "Horizontal", STAGES.FACT),
-        seedProject("TYA-248", "Torre Corporativa Centro", "Guadalajara, Jal.", "Vertical", STAGES.FACT),
-        seedProject("TYA-244", "Torre 1 — Fase 1", "Querétaro, Qro.", "Vertical", STAGES.PORT),
-        seedProject("TYA-249", "Residencial Los Olivos — Etapa 2", "Zapopan, Jal.", "Vertical", STAGES.PORT),
-        seedProject("TYA-250", "Parque Industrial El Marqués", "El Marqués, Qro.", "Industrial", STAGES.PORT),
+        seedProject("TYA-240", "Adamar", "Guadalajara, Jal.", "Por definir", STAGES.LANDBANK, { division: "Residencial", plaza: "Guadalajara", fondo: "TYA", empresa: "19" }),
+        seedProject("TYA-238", "Alamar", "Tlaquepaque, Jal.", "Por definir", STAGES.LANDBANK, { division: "Usos Mixtos", plaza: "Guadalajara", fondo: "TYA CCPS", empresa: "23" }),
+        seedProject("TYA-241", "ALARIA", "Guadalajara, Jal.", "Vertical", STAGES.PERFIL, { division: "Residencial", plaza: "Guadalajara", fondo: "TYA", empresa: "19" }),
+        seedProject("TYA-245", "Altara", "Zapopan, Jal.", "Vertical", STAGES.PERFIL, { division: "Residencial", plaza: "Guadalajara", fondo: "MYA CAPITAL 4", empresa: "10" }),
+        seedProject("TYA-242", "Altara II (Loma Blanca)", "Zapopan, Jal.", "Mixto", STAGES.PREFACT, { division: "Usos Mixtos", plaza: "Guadalajara", fondo: "TYA", empresa: "19" }),
+        seedProject("TYA-246", "Altaterra", "Zapopan, Jal.", "Horizontal", STAGES.PREFACT, { division: "Residencial", plaza: "Guadalajara", fondo: "MYA II", empresa: "34" }),
+        seedProject("TYA-247", "Altavista", "Guadalajara, Jal.", "Mixto", STAGES.PREFACT, { division: "Usos Mixtos", plaza: "Guadalajara", fondo: "TYA CCPS", empresa: "23" }),
+        seedProject("TYA-243", "ALVA", "Tlajomulco, Jal.", "Horizontal", STAGES.FACT, { division: "Residencial", plaza: "Guadalajara", fondo: "TYA", empresa: "19" }),
+        seedProject("TYA-248", "AMBIENTA APARTMENTS", "Guadalajara, Jal.", "Vertical", STAGES.FACT, { division: "Usos Mixtos", plaza: "Guadalajara", fondo: "MYA CAPITAL 4", empresa: "10" }),
+        seedProject("TYA-249", "Blue Residencial", "Zapopan, Jal.", "Vertical", STAGES.PORT, { division: "Residencial", plaza: "Guadalajara", fondo: "MYA II", empresa: "34" }),
+        seedProject("TYA-250", "CENTRO ZAPOPAN", "El Marqués, Qro.", "Industrial", STAGES.PORT, { division: "Industrial", plaza: "Queretaro", fondo: "TYA CCPS", empresa: "23" }),
       ],
       activity: []
     };
 
-    function seedProject(code, name, location, productType, stage){
+    function seedProject(code, name, location, productType, stage, opts){
       const now = new Date();
+      const o = opts || {};
       const p = {
         id: cryptoRandomId(),
         code, name, location, productType,
         stage,
+        division: o.division || "Residencial",
+        plaza: o.plaza || "Guadalajara",
+        fondo: o.fondo || "TYA",
+        empresa: o.empresa != null ? String(o.empresa) : "19",
         owner: "Dirección de Proyectos",
         updatedAt: now.toISOString(),
         gate: gateForStage(stage),
@@ -1610,7 +1619,7 @@
       projectTab: "modelo-financiero",
       modeloSubTab: "vista-general",
       otrosSubTab: "resumen",
-      filters: { q:"", stage:"", gateStatus:"" }
+      filters: { q:"", division:"", plaza:"", fondo:"", empresa:"" }
     };
 
     /* Dashboard Timeline (swimlanes) — seed and state */
@@ -2313,77 +2322,90 @@
       `;
     }
 
+    const FILTER_DIVISION = ["Residencial", "Usos Mixtos", "Industrial", "Turismo"];
+    const FILTER_PLAZA = ["Cancún", "Queretaro", "Guadalajara", "Vallarta"];
+    const FILTER_FONDO = ["TYA", "MYA II", "MYA CAPITAL 4", "TYA CCPS"];
+    const FILTER_EMPRESA = ["19", "34", "23", "10"];
+
     function renderProjects(){
       setCrumbs("Proyectos");
-      const { q, stage, gateStatus } = state.filters;
+      const { q, division, plaza, fondo, empresa } = state.filters;
 
       const filtered = db.projects.filter(p=>{
-        const hay = `${p.code} ${p.name} ${p.location} ${p.productType} ${p.stage} ${p.gateStatus}`.toLowerCase();
+        const hay = `${p.code} ${p.name} ${p.location} ${p.productType} ${p.division || ""} ${p.plaza || ""} ${p.fondo || ""} ${p.empresa || ""}`.toLowerCase();
         if(q && !hay.includes(q.toLowerCase())) return false;
-        if(stage && p.stage !== stage) return false;
-        if(gateStatus && p.gateStatus !== gateStatus) return false;
+        if(division && (p.division || "") !== division) return false;
+        if(plaza && (p.plaza || "") !== plaza) return false;
+        if(fondo && (p.fondo || "") !== fondo) return false;
+        if(empresa && String(p.empresa || "") !== empresa) return false;
         return true;
       });
 
       content.innerHTML = `
         <div class="toolbar">
-          <div class="left" style="flex:1">
-            <div class="pill" style="flex:1; min-width:280px">
+          <div class="left" style="flex:1; flex-wrap:wrap; gap:10px;">
+            <div class="pill" style="flex:1; min-width:220px">
               <span class="muted small">Buscar:</span>
-              <input class="input" id="q" value="${escapeHtml(q)}" placeholder="Código, nombre, ubicación..." />
+              <input class="input" id="q" value="${escapeHtml(q)}" placeholder="Nombre, código..." />
             </div>
 
             <div class="pill">
-              <span class="muted small">Etapa:</span>
-              <select class="select" id="fStage" style="width:180px">
+              <span class="muted small">División:</span>
+              <select class="select" id="fDivision" style="width:160px">
                 <option value="">Todas</option>
-                ${Object.values(STAGES).map(s=>`<option value="${escapeHtml(s)}" ${s===stage?'selected':''}>${escapeHtml(s)}</option>`).join("")}
+                ${FILTER_DIVISION.map(v=>`<option value="${escapeHtml(v)}" ${v===division?'selected':''}>${escapeHtml(v)}</option>`).join("")}
               </select>
             </div>
 
             <div class="pill">
-              <span class="muted small">Gate:</span>
-              <select class="select" id="fGate" style="width:220px">
+              <span class="muted small">Plaza:</span>
+              <select class="select" id="fPlaza" style="width:140px">
+                <option value="">Todas</option>
+                ${FILTER_PLAZA.map(v=>`<option value="${escapeHtml(v)}" ${v===plaza?'selected':''}>${escapeHtml(v)}</option>`).join("")}
+              </select>
+            </div>
+
+            <div class="pill">
+              <span class="muted small">Fondo:</span>
+              <select class="select" id="fFondo" style="width:180px">
                 <option value="">Todos</option>
-                <option value="${GATE_STATUS.PENDING}" ${gateStatus===GATE_STATUS.PENDING?'selected':''}>${GATE_STATUS.PENDING}</option>
-                <option value="${GATE_STATUS.CONDITIONAL}" ${gateStatus===GATE_STATUS.CONDITIONAL?'selected':''}>${GATE_STATUS.CONDITIONAL}</option>
-                <option value="${GATE_STATUS.APPROVED}" ${gateStatus===GATE_STATUS.APPROVED?'selected':''}>${GATE_STATUS.APPROVED}</option>
-                <option value="${GATE_STATUS.REJECTED}" ${gateStatus===GATE_STATUS.REJECTED?'selected':''}>${GATE_STATUS.REJECTED}</option>
-                <option value="N/A" ${gateStatus==="N/A"?'selected':''}>N/A</option>
+                ${FILTER_FONDO.map(v=>`<option value="${escapeHtml(v)}" ${v===fondo?'selected':''}>${escapeHtml(v)}</option>`).join("")}
+              </select>
+            </div>
+
+            <div class="pill">
+              <span class="muted small">Empresa:</span>
+              <select class="select" id="fEmpresa" style="width:100px">
+                <option value="">Todas</option>
+                ${FILTER_EMPRESA.map(v=>`<option value="${escapeHtml(v)}" ${v===empresa?'selected':''}>${escapeHtml(v)}</option>`).join("")}
               </select>
             </div>
           </div>
         </div>
 
-        <table>
+        <table class="projects-list-table">
           <thead>
             <tr>
-              <th style="width:120px">Código</th>
               <th>Proyecto</th>
-              <th style="width:180px">Etapa</th>
-              <th style="width:220px">Gate</th>
-              <th style="width:140px">Estado Gate</th>
-              <th style="width:170px">Actualización</th>
-              <th class="right-align" style="width:180px">Acciones</th>
+              <th>División</th>
+              <th>Plaza</th>
+              <th>Fondo</th>
+              <th>Empresa</th>
+              <th class="right-align">Abrir</th>
             </tr>
           </thead>
           <tbody>
             ${filtered.map(p=>`
               <tr>
-                <td><a class="link" onclick="openProject('${p.id}')">${escapeHtml(p.code)}</a></td>
                 <td>
-                  <div style="font-weight:650">${escapeHtml(p.name)}</div>
-                  <div class="muted small">${escapeHtml(p.location)} • ${escapeHtml(p.productType)}</div>
+                  <a class="link project-name-link" onclick="openProject('${p.id}')">${escapeHtml(p.name)}</a>
                 </td>
-                <td>${stageBadge(p.stage)}</td>
-                <td class="small">${escapeHtml(p.gate)}</td>
-                <td>${gateBadge(p.gateStatus)}</td>
-                <td class="muted small">${fmtDate(p.updatedAt)}</td>
+                <td>${escapeHtml(p.division || "—")}</td>
+                <td>${escapeHtml(p.plaza || "—")}</td>
+                <td>${escapeHtml(p.fondo || "—")}</td>
+                <td>${escapeHtml(p.empresa != null ? String(p.empresa) : "—")}</td>
                 <td class="right-align">
-                  <div class="t-actions">
-                    <button class="btn btn-outline" onclick="openProject('${p.id}')">Abrir</button>
-                    <button class="btn btn-ghost" onclick="openGateModal('${p.id}')">Gate</button>
-                  </div>
+                  <button class="btn btn-outline" onclick="openProject('${p.id}')">Abrir</button>
                 </td>
               </tr>
             `).join("")}
@@ -2396,14 +2418,16 @@
         </div>
       `;
 
-      // Wire filters
       const qEl = document.getElementById("q");
-      const sEl = document.getElementById("fStage");
-      const gEl = document.getElementById("fGate");
-
-      qEl.addEventListener("input", ()=>{ state.filters.q = qEl.value; renderProjects(); });
-      sEl.addEventListener("change", ()=>{ state.filters.stage = sEl.value; renderProjects(); });
-      gEl.addEventListener("change", ()=>{ state.filters.gateStatus = gEl.value; renderProjects(); });
+      const dEl = document.getElementById("fDivision");
+      const plEl = document.getElementById("fPlaza");
+      const fEl = document.getElementById("fFondo");
+      const eEl = document.getElementById("fEmpresa");
+      if(qEl) qEl.addEventListener("input", ()=>{ state.filters.q = qEl.value; renderProjects(); });
+      if(dEl) dEl.addEventListener("change", ()=>{ state.filters.division = dEl.value; renderProjects(); });
+      if(plEl) plEl.addEventListener("change", ()=>{ state.filters.plaza = plEl.value; renderProjects(); });
+      if(fEl) fEl.addEventListener("change", ()=>{ state.filters.fondo = fEl.value; renderProjects(); });
+      if(eEl) eEl.addEventListener("change", ()=>{ state.filters.empresa = eEl.value; renderProjects(); });
     }
 
     function renderSettings(){
@@ -3459,22 +3483,20 @@
        ========================= */
     window.resetDemo = function(){
       db.projects = [
-        seedProject("TYA-240", "Terreno Poniente (oportunidad)", "Guadalajara, Jal.", "Por definir", STAGES.LANDBANK),
-        seedProject("TYA-239", "Lote Industrial Norte", "El Salto, Jal.", "Industrial", STAGES.LANDBANK),
-        seedProject("TYA-238", "Predio Mixto Centro Sur", "Tlaquepaque, Jal.", "Por definir", STAGES.LANDBANK),
-        seedProject("TYA-241", "Residencial Norte", "Guadalajara, Jal.", "Vertical", STAGES.PERFIL),
-        seedProject("TYA-245", "Condominio Las Palmas", "Zapopan, Jal.", "Vertical", STAGES.PERFIL),
-        seedProject("TYA-242", "Mixto Centro", "Zapopan, Jal.", "Mixto", STAGES.PREFACT),
-        seedProject("TYA-246", "Residencial Valle Real", "Zapopan, Jal.", "Horizontal", STAGES.PREFACT),
-        seedProject("TYA-247", "Plaza Comercial Periférico", "Guadalajara, Jal.", "Mixto", STAGES.PREFACT),
-        seedProject("TYA-243", "Lotes Sur", "Tlajomulco, Jal.", "Horizontal", STAGES.FACT),
-        seedProject("TYA-248", "Torre Corporativa Centro", "Guadalajara, Jal.", "Vertical", STAGES.FACT),
-        seedProject("TYA-244", "Torre 1 — Fase 1", "Querétaro, Qro.", "Vertical", STAGES.PORT),
-        seedProject("TYA-249", "Residencial Los Olivos — Etapa 2", "Zapopan, Jal.", "Vertical", STAGES.PORT),
-        seedProject("TYA-250", "Parque Industrial El Marqués", "El Marqués, Qro.", "Industrial", STAGES.PORT),
+        seedProject("TYA-240", "Adamar", "Guadalajara, Jal.", "Por definir", STAGES.LANDBANK, { division: "Residencial", plaza: "Guadalajara", fondo: "TYA", empresa: "19" }),
+        seedProject("TYA-238", "Alamar", "Tlaquepaque, Jal.", "Por definir", STAGES.LANDBANK, { division: "Usos Mixtos", plaza: "Guadalajara", fondo: "TYA CCPS", empresa: "23" }),
+        seedProject("TYA-241", "ALARIA", "Guadalajara, Jal.", "Vertical", STAGES.PERFIL, { division: "Residencial", plaza: "Guadalajara", fondo: "TYA", empresa: "19" }),
+        seedProject("TYA-245", "Altara", "Zapopan, Jal.", "Vertical", STAGES.PERFIL, { division: "Residencial", plaza: "Guadalajara", fondo: "MYA CAPITAL 4", empresa: "10" }),
+        seedProject("TYA-242", "Altara II (Loma Blanca)", "Zapopan, Jal.", "Mixto", STAGES.PREFACT, { division: "Usos Mixtos", plaza: "Guadalajara", fondo: "TYA", empresa: "19" }),
+        seedProject("TYA-246", "Altaterra", "Zapopan, Jal.", "Horizontal", STAGES.PREFACT, { division: "Residencial", plaza: "Guadalajara", fondo: "MYA II", empresa: "34" }),
+        seedProject("TYA-247", "Altavista", "Guadalajara, Jal.", "Mixto", STAGES.PREFACT, { division: "Usos Mixtos", plaza: "Guadalajara", fondo: "TYA CCPS", empresa: "23" }),
+        seedProject("TYA-243", "ALVA", "Tlajomulco, Jal.", "Horizontal", STAGES.FACT, { division: "Residencial", plaza: "Guadalajara", fondo: "TYA", empresa: "19" }),
+        seedProject("TYA-248", "AMBIENTA APARTMENTS", "Guadalajara, Jal.", "Vertical", STAGES.FACT, { division: "Usos Mixtos", plaza: "Guadalajara", fondo: "MYA CAPITAL 4", empresa: "10" }),
+        seedProject("TYA-249", "Blue Residencial", "Zapopan, Jal.", "Vertical", STAGES.PORT, { division: "Residencial", plaza: "Guadalajara", fondo: "MYA II", empresa: "34" }),
+        seedProject("TYA-250", "CENTRO ZAPOPAN", "El Marqués, Qro.", "Industrial", STAGES.PORT, { division: "Industrial", plaza: "Queretaro", fondo: "TYA CCPS", empresa: "23" }),
       ];
       db.activity = [];
-      state.filters = { q:"", stage:"", gateStatus:"" };
+      state.filters = { q:"", division:"", plaza:"", fondo:"", empresa:"" };
       state.selectedProjectId = null;
       state.projectTab = "modelo-financiero";
       state.modeloSubTab = "vista-general";
