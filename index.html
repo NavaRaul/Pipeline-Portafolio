@@ -315,7 +315,7 @@
       border:1px solid var(--color-border);
       border-radius:var(--radius-lg);
       box-shadow:var(--shadow-sm);
-      padding:var(--sp-16);
+      padding:var(--sp-12);
       min-width:0;
     }
     .card h2{
@@ -568,8 +568,8 @@
     .mf-node__meta{ font-size:var(--fs-12); color:var(--color-text-muted); }
     .mf-node__kpi{ font-size:var(--fs-12); font-weight:900; margin-top:6px; }
     .mf-tablewrap{ overflow:auto; }
-    .mf-table{ width:100%; border-collapse:collapse; font-size:var(--fs-12); }
-    .mf-table th,.mf-table td{ border-bottom:1px solid var(--color-border); padding:10px; white-space:nowrap; vertical-align:top; }
+    .mf-table{ width:auto; max-width:100%; border-collapse:collapse; font-size:var(--fs-12); }
+    .mf-table th,.mf-table td{ border-bottom:1px solid var(--color-border); padding:5px 8px; white-space:nowrap; vertical-align:top; }
     .mf-table th{ text-align:left; color:var(--color-text-muted); font-weight:900; font-size:11px; text-transform:uppercase; letter-spacing:.03em; background:var(--color-bg-soft); position:sticky; top:0; z-index:1; }
     .mf-table td.wrap{ white-space:normal; min-width:260px; }
     .mf-tag{ display:inline-block; font-size:11px; font-weight:900; padding:4px 8px; border-radius:999px; border:1px solid var(--color-border); background:var(--color-bg-soft); }
@@ -605,11 +605,11 @@
 
     /* MF Dashboard — Proyecto portafolio (resumen ejecutivo) */
     .mfd{ padding:0; font-size:var(--fs-13); }
-    .mfd__section{ margin-bottom:var(--sp-24); }
+    .mfd__section{ margin-bottom:var(--sp-16); }
     .mfd__section:last-child{ margin-bottom:0; }
-    .mfd__title{ font-size:var(--fs-12); font-weight:800; color:var(--color-text-muted); text-transform:uppercase; letter-spacing:.04em; margin-bottom:var(--sp-12); }
-    .mfd-kpis{ display:grid; grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); gap:var(--sp-12); }
-    .mfd-kpi{ background:var(--color-bg-soft); border:1px solid var(--color-border); border-radius:var(--radius-md); padding:var(--sp-12); }
+    .mfd__title{ font-size:var(--fs-12); font-weight:800; color:var(--color-text-muted); text-transform:uppercase; letter-spacing:.04em; margin-bottom:var(--sp-8); }
+    .mfd-kpis{ display:grid; grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); gap:var(--sp-10); }
+    .mfd-kpi{ background:var(--color-bg-soft); border:1px solid var(--color-border); border-radius:var(--radius-md); padding:var(--sp-10); }
     .mfd-kpi__label{ font-size:var(--fs-11); color:var(--color-text-muted); font-weight:700; margin-bottom:4px; }
     .mfd-kpi__value{ font-size:var(--fs-18); font-weight:800; color:var(--color-text); }
     .mfd-kpi__base{ font-size:var(--fs-12); color:var(--color-text-muted); margin-top:4px; }
@@ -617,8 +617,8 @@
     .mfd-kpi__delta.pos{ color:var(--color-success); }
     .mfd-kpi__delta.neg{ color:var(--color-danger); }
     .mfd-kpi__delta.neu{ color:var(--color-text-muted); }
-    .mfd-table{ width:100%; border-collapse:collapse; font-size:var(--fs-12); }
-    .mfd-table th,.mfd-table td{ padding:8px 10px; text-align:left; border-bottom:1px solid var(--color-border); }
+    .mfd-table{ width:auto; max-width:100%; border-collapse:collapse; font-size:var(--fs-12); }
+    .mfd-table th,.mfd-table td{ padding:4px 8px; text-align:left; border-bottom:1px solid var(--color-border); }
     .mfd-table th{ color:var(--color-text-muted); font-weight:700; }
     .mfd-table .num,.mfd-table .delta{ text-align:right; }
     .mfd-waterfall{ display:flex; flex-wrap:wrap; align-items:flex-end; gap:4px; margin:var(--sp-12) 0; min-height:80px; }
@@ -643,14 +643,14 @@
     .pnb{ font-size:var(--fs-13); max-width:1200px; }
     .pnb__h1{ font-size:var(--fs-18); font-weight:800; margin:0 0 4px 0; }
     .pnb__sub{ font-size:var(--fs-12); color:var(--color-text-muted); margin-bottom:var(--sp-16); }
-    .pnb-section{ margin-bottom:var(--sp-20); }
-    .pnb-section__title{ font-size:var(--fs-12); font-weight:800; color:var(--color-text-muted); text-transform:uppercase; letter-spacing:.04em; margin-bottom:var(--sp-8); }
+    .pnb-section{ margin-bottom:var(--sp-14); }
+    .pnb-section__title{ font-size:var(--fs-12); font-weight:800; color:var(--color-text-muted); text-transform:uppercase; letter-spacing:.04em; margin-bottom:var(--sp-6); }
     .pnb-kpis{ display:grid; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)); gap:var(--sp-10); }
     .pnb-kpi{ background:var(--color-bg-soft); border:1px solid var(--color-border); border-radius:var(--radius-md); padding:var(--sp-10); }
     .pnb-kpi__label{ font-size:var(--fs-11); color:var(--color-text-muted); font-weight:700; }
     .pnb-kpi__value{ font-size:var(--fs-16); font-weight:800; margin-top:2px; }
-    .pnb-table{ width:100%; border-collapse:collapse; font-size:var(--fs-12); }
-    .pnb-table th,.pnb-table td{ padding:6px 10px; text-align:left; border-bottom:1px solid var(--color-border); }
+    .pnb-table{ width:auto; max-width:100%; border-collapse:collapse; font-size:var(--fs-12); }
+    .pnb-table th,.pnb-table td{ padding:4px 8px; text-align:left; border-bottom:1px solid var(--color-border); }
     .pnb-table th{ color:var(--color-text-muted); font-weight:700; background:var(--color-bg-soft); }
     .pnb-table .r{ text-align:right; }
     .pnb-table .total{ font-weight:800; background:var(--color-bg-soft); }
@@ -681,6 +681,108 @@
     .pnb-timeline__summary .pnb-kpi{ margin:0; }
     .pnb-timeline__foot{ display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-16); margin-top:var(--sp-20); }
     @media (max-width:900px){ .pnb-timeline__foot{ grid-template-columns:1fr; } }
+
+    /* Comparativa de Movimientos — Vista ejecutiva (estilo Excel) */
+    .cmv{ font-size:var(--fs-13); max-width:1100px; }
+    .cmv-header{ border:1px solid var(--color-border); border-radius:var(--radius-md); padding:var(--sp-16); margin-bottom:var(--sp-16); background:var(--color-bg-soft); }
+    .cmv-header__title{ font-size:var(--fs-20); font-weight:800; margin:0 0 6px 0; }
+    .cmv-header__meta{ font-size:var(--fs-12); color:var(--color-text-muted); }
+    .cmv-section{ margin-bottom:var(--sp-16); border:1px solid var(--color-border); border-radius:var(--radius-md); overflow:hidden; }
+    .cmv-section .cmv-table{ margin:8px 10px 10px; }
+    .cmv-section__head{ padding:6px 10px; background:var(--color-primary); color:#fff; font-size:var(--fs-12); font-weight:800; }
+    .cmv-table{ width:100%; max-width:100%; border-collapse:collapse; font-size:var(--fs-12); table-layout:fixed; }
+    .cmv-table th,.cmv-table td{ padding:4px 8px; border:1px solid var(--color-border); text-align:left; box-sizing:border-box; }
+    .cmv-table th:first-child,.cmv-table td:first-child{ width:40%; min-width:120px; word-wrap:break-word; }
+    .cmv-table th.r,.cmv-table td.r{ min-width:0; text-align:right; white-space:nowrap; }
+    .cmv-table th:not(:first-child),.cmv-table td:not(:first-child){ width:auto; }
+    .cmv-table th{ background:var(--color-bg-soft); font-weight:700; color:var(--color-text-muted); }
+    .cmv-table .r{ text-align:right; }
+    .cmv-table .total{ font-weight:800; background:var(--color-bg-soft); }
+    .cmv-table .input{ color:#004270; }
+    .cmv-table .formula{ color:var(--color-text); }
+    .cmv-table .ref{ color:#065F46; }
+    .cmv-table .assum{ background:#FEF9C3; }
+    .cmv-kpis{ display:grid; grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); gap:var(--sp-12); padding:var(--sp-12); }
+    .cmv-kpi{ border:2px solid var(--color-primary); border-radius:var(--radius-md); padding:var(--sp-12); background:linear-gradient(180deg, #E0F2FE 0%, #fff 100%); }
+    .cmv-kpi__label{ font-size:var(--fs-11); color:var(--color-text-muted); font-weight:700; }
+    .cmv-kpi__value{ font-size:var(--fs-20); font-weight:800; margin-top:4px; }
+    .cmv-waterfall{ display:flex; flex-wrap:wrap; align-items:flex-end; gap:4px; padding:var(--sp-12); min-height:100px; }
+    .cmv-wf-bar{ min-width:40px; padding:6px 4px; border-radius:var(--radius-sm); font-size:var(--fs-11); font-weight:700; color:#fff; text-align:center; }
+    .cmv-wf-bar.ing{ background:#065F46; }
+    .cmv-wf-bar.costo{ background:#DC2626; }
+    .cmv-wf-bar.util{ background:#004270; }
+    .cmv-scenario{ padding:4px 8px; border-radius:4px; font-size:var(--fs-11); font-weight:700; }
+    .cmv-scenario.base{ background:#E0F2FE; color:#004270; }
+    .cmv-scenario.opt{ background:#D1FAE5; color:#065F46; }
+    .cmv-scenario.pes{ background:#FEE2E2; color:#991B1B; }
+    .cmv-scenario.act{ background:#FEF3C7; color:#92400E; }
+    .cmv-var-pos{ color:#065F46; }
+    .cmv-var-neg{ color:#991B1B; }
+
+    /* Versiones — Log cronológico modelo financiero */
+    .ver{ font-size:10pt; font-family:var(--font); max-width:900px; }
+    .ver-table-wrap{ overflow-x:auto; border:1px solid var(--color-border); border-radius:var(--radius-md); }
+    .ver-table{ width:100%; border-collapse:collapse; font-size:10pt; table-layout:fixed; }
+    .ver-table thead th{ text-align:left; color:var(--color-text); font-weight:700; padding:6px 6px; border-bottom:1px solid var(--color-border); background:transparent; }
+    .ver-table thead th.num{ text-align:right; }
+    .ver-table tbody td{ padding:5px 6px; border-bottom:1px solid var(--color-border); vertical-align:top; }
+    .ver-table tbody td.num{ text-align:right; white-space:nowrap; }
+    .ver-table .ver--idx{ width:2%; min-width:20px; padding:5px 4px; border-right:1px solid var(--color-border); box-sizing:border-box; }
+    .ver-table .ver--fecha{ width:7%; min-width:48px; box-sizing:border-box; }
+    .ver-table .ver--etiqueta{ width:8%; min-width:56px; box-sizing:border-box; }
+    .ver-table .ver--metrica{ width:7%; min-width:52px; box-sizing:border-box; }
+    .ver-table .ver--bps-mov{ width:6%; min-width:44px; box-sizing:border-box; }
+    .ver-table .ver--bps-acum{ width:7%; min-width:52px; box-sizing:border-box; }
+    .ver-table .ver--equity{ width:8%; min-width:60px; box-sizing:border-box; }
+    .ver-table .ver--margen{ width:6%; min-width:44px; box-sizing:border-box; }
+    .ver-table .ver--desc{ width:49%; min-width:160px; word-wrap:break-word; white-space:normal; box-sizing:border-box; }
+    .ver-table tbody tr.base{ font-weight:700; background:#fff; }
+    .ver-table tbody tr.base td{ background:#fff; }
+    .ver-table tbody tr:not(.base):nth-child(odd){ background:#fff; }
+    .ver-table tbody tr:not(.base):nth-child(even){ background:var(--color-bg-soft); }
+    .ver-table tbody tr.subitem td{ border-bottom:1px solid var(--color-border); }
+    .ver-table tbody tr.subitem td:not(.ver--desc){ background:inherit; }
+    .ver-table tbody tr.subitem .ver--desc{ font-size:9pt; color:var(--color-text-muted); padding-left:20px; }
+    .ver-pendientes{ margin-top:24px; padding-top:16px; border-top:2px solid var(--color-border); }
+    .ver-pendientes__title{ font-size:11pt; font-weight:800; margin-bottom:12px; color:var(--color-text); }
+    .ver-pendientes__periodo{ font-size:10pt; font-weight:700; margin:14px 0 6px 0; color:var(--color-text-muted); }
+    .ver-pendientes__periodo:first-of-type{ margin-top:0; }
+    .ver-pendientes__list{ list-style:none; padding:0; margin:0; }
+    .ver-pendientes__list li{ padding:4px 0 4px 8px; border-left:3px solid var(--color-border); margin-bottom:4px; font-size:10pt; display:flex; align-items:flex-start; gap:8px; }
+    .ver-pendientes__list li.ok{ border-left-color:var(--color-success); }
+    .ver-pendientes__list li .status{ flex-shrink:0; color:var(--color-success); }
+
+    /* Responsive — Proyecto portafolio (Versiones, Plan neg., Comparativa, MF) */
+    @media (max-width: 900px){
+      .ver{ max-width:100%; font-size:9pt; }
+      .ver-table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; margin:0 -2px; }
+      .ver-table{ font-size:9pt; min-width:100%; }
+      .ver-table thead th,.ver-table tbody td{ padding:4px 5px; }
+      .ver-table .ver--idx{ min-width:20px; padding:4px 2px; }
+      .ver-table .ver--desc{ min-width:180px; }
+      .ver-pendientes__title{ font-size:10pt; }
+      .ver-pendientes__periodo,.ver-pendientes__list li{ font-size:9pt; }
+    }
+    @media (max-width: 600px){
+      .content{ padding:var(--sp-8); }
+      .ver-table .ver--desc{ min-width:140px; }
+      .pnb-timeline__month{ min-width:120px; flex:0 0 120px; }
+      .pnb-timeline__month-body{ padding:8px; font-size:10px; }
+      .pnb-kpis{ grid-template-columns:repeat(2, 1fr); }
+      .cmv-kpis{ grid-template-columns:repeat(2, 1fr); }
+      .cmv-header{ padding:var(--sp-12); }
+      .cmv-header__title{ font-size:var(--fs-16); }
+      .mfd-kpis{ grid-template-columns:repeat(2, 1fr); }
+      .mfd-kpi__value{ font-size:var(--fs-16); }
+      .mfd-cash__chart{ height:80px; }
+      .mfd-cash__meta{ flex-direction:column; gap:var(--sp-8); }
+    }
+    @media (max-width: 480px){
+      .ver-table .ver--desc{ min-width:120px; }
+      .pnb-timeline__month{ min-width:100px; flex:0 0 100px; }
+      .pnb__h1{ font-size:var(--fs-16); }
+      .pnb-section__title,.mfd__title{ font-size:11px; }
+    }
 
     /* Kanban: 5 columnas en una sola línea (Land Bank, Perfil, Prefact, Fact, No Go) */
     .kanban{
@@ -3198,29 +3300,192 @@
         return;
       }
 
-      /* ----- Versiones ----- */
+      /* ----- Versiones — Log cronológico modelo financiero / proyección ----- */
       if(state.projectTab === "versiones"){
+        const fmtPct2 = (x) => x == null || Number.isNaN(x) ? "" : (x*100).toFixed(2)+"%";
+        const fmtBps = (n) => n == null || Number.isNaN(n) ? "" : new Intl.NumberFormat("es-MX",{maximumFractionDigits:0}).format(n);
+        const fmtEquity = (n) => n == null || Number.isNaN(n) ? "" : "$"+new Intl.NumberFormat("es-MX",{maximumFractionDigits:1,minimumFractionDigits:1}).format(n);
+        const versionRows = [
+          { base: true, fechaCorte: "", etiqueta: "Base Case", metrica: 0.212, bpsMov: null, bpsAcum: null, equityPico: 125000, margen: 0.245, desc: "Underwriting original. Caso base aprobado en comité." },
+          { fechaCorte: "Jul-24", etiqueta: "", metrica: 0.208, bpsMov: -40, bpsAcum: -40, equityPico: 128000, margen: 0.240, desc: "Ajuste CAPEX +3.2%. Impacto en TIR -40 bps. Justificación: actualización de costos de construcción según cotizaciones." },
+          { subitem: true, desc: "  · Desglose: partida de cimentación +8%, estructura +2.5%." },
+          { fechaCorte: "", etiqueta: "", metrica: 0.205, bpsMov: -30, bpsAcum: -70, equityPico: 130000, margen: 0.238, desc: "Cronograma +1 mes. Retraso en licencias. Efecto en TIR -30 bps." },
+          { fechaCorte: "Oct-24", etiqueta: "", metrica: 0.211, bpsMov: +60, bpsAcum: -10, equityPico: 129000, margen: 0.242, desc: "Actualización de precios de venta +1.2% por segmento. Mejora en TIR +60 bps." },
+          { subitem: true, desc: "  · Ajuste comercial en departamentos y lotes; casas sin cambio." },
+          { fechaCorte: "", etiqueta: "", metrica: 0.207, bpsMov: -40, bpsAcum: -50, equityPico: 131000, margen: 0.235, desc: "Incremento en costos de financiamiento (tasa de referencia). Impacto -40 bps." },
+          { fechaCorte: "", etiqueta: "", metrica: 0.204, bpsMov: -30, bpsAcum: -80, equityPico: 132000, margen: 0.232, desc: "Mayor participación socios minoritarios (anticipo). Reducción TIR -30 bps." },
+          { subitem: true, desc: "  · Acuerdo de anticipo firmado; se refleja en flujo y costo de capital." }
+        ];
+        const pendientesByPeriodo = [
+          { periodo: "Pendientes Modelo Dic 2024", items: [
+            { text: "Cerrar bases de ventas con comercial", status: "ok" },
+            { text: "Actualizar curva de absorción post-cierre", status: "" },
+            { text: "Revisar contingencia de obra con costos", status: "ok" }
+          ]},
+          { periodo: "Pendientes Modelo Jul 2024", items: [
+            { text: "Incorporar nueva tasa de interés en modelo", status: "ok" },
+            { text: "Documentar supuestos de precio por tipología", status: "" }
+          ]}
+        ];
+        const thead = `<thead><tr><th class="ver--idx"></th><th class="ver--fecha">Fecha corte</th><th class="ver--etiqueta">Versión / Etiqueta</th><th class="num ver--metrica">Métrica principal (%)</th><th class="num ver--bps-mov">Var. por mov. (BPS)</th><th class="num ver--bps-acum">Var. acum. vs Base (BPS)</th><th class="num ver--equity">Pico capital / Equity ($)</th><th class="num ver--margen">Margen (%)</th><th class="ver--desc">Descripción / Desglose</th></tr></thead>`;
+        const tbodyRows = versionRows.map((r, i) => {
+          if (r.subitem) return `<tr class="subitem"><td class="ver--idx"></td><td class="ver--fecha"></td><td class="ver--etiqueta"></td><td class="num ver--metrica"></td><td class="num ver--bps-mov"></td><td class="num ver--bps-acum"></td><td class="num ver--equity"></td><td class="num ver--margen"></td><td class="ver--desc">${escapeHtml(r.desc)}</td></tr>`;
+          const cls = r.base ? "base" : "";
+          return `<tr class="${cls}"><td class="ver--idx">${i+1}</td><td class="ver--fecha">${escapeHtml(r.fechaCorte||"")}</td><td class="ver--etiqueta">${escapeHtml(r.etiqueta||"")}</td><td class="num ver--metrica">${fmtPct2(r.metrica)}</td><td class="num ver--bps-mov">${fmtBps(r.bpsMov)}</td><td class="num ver--bps-acum">${fmtBps(r.bpsAcum)}</td><td class="num ver--equity">${fmtEquity(r.equityPico)}</td><td class="num ver--margen">${fmtPct2(r.margen)}</td><td class="ver--desc">${escapeHtml(r.desc)}</td></tr>`;
+        }).join("");
+        const pendientesHtml = pendientesByPeriodo.map(p => `
+          <div class="ver-pendientes__periodo">${escapeHtml(p.periodo)}</div>
+          <ul class="ver-pendientes__list">${p.items.map(it => `<li class="${it.status ? "ok" : ""}">${it.status ? '<span class="status">✓</span>' : ""}<span>${escapeHtml(it.text)}</span></li>`).join("")}</ul>
+        `).join("");
         tabBody.innerHTML = `
-          <div class="card">
-            <h2>Versiones</h2>
-            <div class="muted small">Historial y versiones del proyecto (prototipo).</div>
-            <div class="divider"></div>
-            <div class="muted">Módulo en construcción.</div>
+        <div class="ver">
+          <div class="ver-table-wrap">
+            <table class="ver-table">
+              ${thead}
+              <tbody>${tbodyRows}</tbody>
+            </table>
           </div>
-        `;
+          <div class="ver-pendientes">
+            <div class="ver-pendientes__title">Notas y pendientes por período</div>
+            ${pendientesHtml}
+          </div>
+        </div>`;
         return;
       }
 
-      /* ----- Comparativa de Movimientos ----- */
+      /* ----- Comparativa de Movimientos — Vista ejecutiva plan de negocios ----- */
       if(state.projectTab === "comparativa-movimientos"){
+        const fmtCur = (n) => n == null || Number.isNaN(n) ? "—" : new Intl.NumberFormat("es-MX",{style:"currency",currency:"MXN",maximumFractionDigits:0,minimumFractionDigits:0}).format(n);
+        const fmtPct1 = (x) => x == null || Number.isNaN(x) ? "—" : (x*100).toFixed(1)+"%";
+        const fmtNeg = (n) => { if(n==null||Number.isNaN(n)) return "—"; const v = Math.round(n); return v < 0 ? "("+fmtCur(-v)+")" : fmtCur(v); };
+        const ventasCondos = 265000, ventasCasas = 228000, ventasLotes = 72000, ventasComercial = 38000;
+        const ventasBrutas = ventasCondos+ventasCasas+ventasLotes+ventasComercial;
+        const comisionesVenta = Math.round(ventasBrutas*0.05), ingresosNetosVenta = ventasBrutas - comisionesVenta;
+        const costoTerreno = 82000, costoConstCondo = 132000, costoConstCasa = 115000, costoConstLote = 23000, costoConstCom = 15000;
+        const costoConstTotal = costoConstCondo+costoConstCasa+costoConstLote+costoConstCom;
+        const infUrban = 20000, infVial = 14000, infServ = 7000, infAmen = 4500, infCont = 5500;
+        const infTotal = infUrban+infVial+infServ+infAmen+infCont;
+        const opExGA = 11000, opExMkt = 7500, opExHOA = 2800, opExPred = 2200, opExMant = 3500, opExDev = 20000, opExConst = 14000, opExCont = 4500;
+        const opExTotal = opExGA+opExMkt+opExHOA+opExPred+opExMant+opExDev+opExConst+opExCont;
+        const softCosts = 16000, finPrest = 1800, finApert = 1200, finInter = 11500, finAdm = 700;
+        const finTotal = finPrest+finApert+finInter+finAdm;
+        const sociosPart = 18000, sociosAnt = 4500, sociosTotal = sociosPart+sociosAnt;
+        const utilidadTotal = ingresosNetosVenta - costoTerreno - costoConstTotal - infTotal - opExTotal - finTotal - sociosTotal;
+        const tirBase = 0.186, margenBase = 0.24, tirOpt = 0.218, margenOpt = 0.28, tirPes = 0.152, margenPes = 0.18, tirAct = 0.176, margenAct = 0.236;
+        const utilBase = 38000, utilOpt = 52000, utilPes = 26000, utilAct = Math.round(utilidadTotal);
+        const unidTotal = 167, precioProm = Math.round(ventasBrutas/unidTotal), horizonte = 2.5;
         tabBody.innerHTML = `
-          <div class="card">
-            <h2>Comparativa de Movimientos</h2>
-            <div class="muted small">Comparativa de movimientos del proyecto (prototipo).</div>
-            <div class="divider"></div>
-            <div class="muted">Módulo en construcción.</div>
+        <div class="cmv">
+          <div class="cmv-header">
+            <div class="cmv-header__title">${escapeHtml(p.code)} — ${escapeHtml(p.name)}</div>
+            <div class="cmv-header__meta">Actualización: ${fmtDate(p.updatedAt || new Date().toISOString())} · Versión del modelo: FC-02</div>
           </div>
-        `;
+
+          <div class="cmv-section">
+            <div class="cmv-section__head">KPIs principales</div>
+            <div class="cmv-kpis">
+              <div class="cmv-kpi"><div class="cmv-kpi__label">TIR pre-tax apalancada</div><div class="cmv-kpi__value">${fmtPct1(tirAct)}</div></div>
+              <div class="cmv-kpi"><div class="cmv-kpi__label">Margen operativo</div><div class="cmv-kpi__value">${fmtPct1(margenAct)}</div></div>
+              <div class="cmv-kpi"><div class="cmv-kpi__label">Utilidad neta total</div><div class="cmv-kpi__value">${fmtCur(utilidadTotal)}</div></div>
+              <div class="cmv-kpi"><div class="cmv-kpi__label">Precio promedio por unidad</div><div class="cmv-kpi__value">${fmtCur(precioProm*1000)}</div></div>
+              <div class="cmv-kpi"><div class="cmv-kpi__label">Número total de unidades</div><div class="cmv-kpi__value">${unidTotal}</div></div>
+            </div>
+          </div>
+
+          <div class="cmv-section">
+            <div class="cmv-section__head">Resumen de ingresos</div>
+            <table class="cmv-table">
+              <tbody>
+                <tr><td>Ventas brutas — Condominios</td><td class="r input">${fmtCur(ventasCondos*1000)}</td></tr>
+                <tr><td>Ventas brutas — Casas</td><td class="r input">${fmtCur(ventasCasas*1000)}</td></tr>
+                <tr><td>Ventas brutas — Lotes</td><td class="r input">${fmtCur(ventasLotes*1000)}</td></tr>
+                <tr><td>Ventas brutas — Comercial</td><td class="r input">${fmtCur(ventasComercial*1000)}</td></tr>
+                <tr class="total"><td>Ventas brutas totales</td><td class="r formula">${fmtCur(ventasBrutas*1000)}</td></tr>
+                <tr><td>Comisiones de venta</td><td class="r input">${fmtNeg(-comisionesVenta*1000)}</td></tr>
+                <tr class="total"><td>Ingresos netos de venta</td><td class="r formula">${fmtCur(ingresosNetosVenta*1000)}</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="cmv-section">
+            <div class="cmv-section__head">Estructura de costos</div>
+            <table class="cmv-table">
+              <tbody>
+                <tr><td>Costo de terreno (adquisición + cierre)</td><td class="r assum">${fmtCur(costoTerreno*1000)}</td></tr>
+                <tr><td>Costos de construcción — Condominios</td><td class="r input">${fmtCur(costoConstCondo*1000)}</td></tr>
+                <tr><td>Costos de construcción — Casas</td><td class="r input">${fmtCur(costoConstCasa*1000)}</td></tr>
+                <tr><td>Costos de construcción — Lotes</td><td class="r input">${fmtCur(costoConstLote*1000)}</td></tr>
+                <tr><td>Costos de construcción — Comercial</td><td class="r input">${fmtCur(costoConstCom*1000)}</td></tr>
+                <tr class="total"><td>Costos de construcción total</td><td class="r formula">${fmtCur(costoConstTotal*1000)}</td></tr>
+                <tr><td>Infraestructura — Urbanización</td><td class="r input">${fmtCur(infUrban*1000)}</td></tr>
+                <tr><td>Infraestructura — Vialidades y servicios</td><td class="r input">${fmtCur(infVial*1000)}</td></tr>
+                <tr><td>Infraestructura — Servicios</td><td class="r input">${fmtCur(infServ*1000)}</td></tr>
+                <tr><td>Infraestructura — Amenidades y contingencia</td><td class="r input">${fmtCur((infAmen+infCont)*1000)}</td></tr>
+                <tr class="total"><td>Costos infraestructura plan maestro</td><td class="r formula">${fmtCur(infTotal*1000)}</td></tr>
+                <tr><td>G&A</td><td class="r input">${fmtCur(opExGA*1000)}</td></tr>
+                <tr><td>Marketing, HOA, predial, mantenimiento</td><td class="r input">${fmtCur((opExMkt+opExHOA+opExPred+opExMant)*1000)}</td></tr>
+                <tr><td>Fees desarrollador y constructor, contingencia</td><td class="r input">${fmtCur((opExDev+opExConst+opExCont)*1000)}</td></tr>
+                <tr class="total"><td>Costos operativos totales</td><td class="r formula">${fmtCur(opExTotal*1000)}</td></tr>
+                <tr><td>Costos blandos (soft costs)</td><td class="r assum">${fmtCur(softCosts*1000)}</td></tr>
+                <tr><td>Gastos prestamista, apertura, intereses, com. administrativa</td><td class="r input">${fmtCur(finTotal*1000)}</td></tr>
+                <tr><td>Pagos socios minoritarios (participación + anticipos)</td><td class="r input">${fmtCur(sociosTotal*1000)}</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="cmv-section">
+            <div class="cmv-section__head">Análisis de sensibilidad / escenarios comparativos</div>
+            <table class="cmv-table">
+              <thead><tr><th>Métrica</th><th class="r">Base</th><th class="r">Optimista</th><th class="r">Pesimista</th><th class="r">Actual</th><th class="r">Var. vs Base $</th><th class="r">Var. %</th></tr></thead>
+              <tbody>
+                <tr><td>TIR pre-tax apalancada</td><td class="r">${fmtPct1(tirBase)}</td><td class="r cmv-scenario opt">${fmtPct1(tirOpt)}</td><td class="r cmv-scenario pes">${fmtPct1(tirPes)}</td><td class="r cmv-scenario act">${fmtPct1(tirAct)}</td><td class="r">${fmtPct1(tirAct-tirBase)}</td><td class="r cmv-var-neg">${((tirAct-tirBase)/tirBase*100).toFixed(1)}%</td></tr>
+                <tr><td>Margen operativo</td><td class="r">${fmtPct1(margenBase)}</td><td class="r">${fmtPct1(margenOpt)}</td><td class="r">${fmtPct1(margenPes)}</td><td class="r">${fmtPct1(margenAct)}</td><td class="r">${fmtPct1(margenAct-margenBase)}</td><td class="r cmv-var-neg">${((margenAct-margenBase)/margenBase*100).toFixed(1)}%</td></tr>
+                <tr><td>Utilidad neta total</td><td class="r">${fmtCur(utilBase*1000)}</td><td class="r">${fmtCur(utilOpt*1000)}</td><td class="r">${fmtCur(utilPes*1000)}</td><td class="r">${fmtCur(utilAct*1000)}</td><td class="r cmv-var-neg">${fmtNeg((utilAct-utilBase)*1000)}</td><td class="r cmv-var-neg">${((utilAct-utilBase)/utilBase*100).toFixed(1)}%</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="cmv-section">
+            <div class="cmv-section__head">Cascada de rentabilidad</div>
+            <table class="cmv-table">
+              <tbody>
+                <tr><td>Ingresos netos</td><td class="r ref">${fmtCur(ingresosNetosVenta*1000)}</td></tr>
+                <tr><td>Menos Costos de construcción</td><td class="r input">${fmtNeg(-costoConstTotal*1000)}</td></tr>
+                <tr><td>Menos Infraestructura</td><td class="r input">${fmtNeg(-infTotal*1000)}</td></tr>
+                <tr><td>Menos OPEX y soft costs</td><td class="r input">${fmtNeg(-(opExTotal+softCosts)*1000)}</td></tr>
+                <tr><td>Menos Costo terreno</td><td class="r input">${fmtNeg(-costoTerreno*1000)}</td></tr>
+                <tr><td>Menos Financiamiento</td><td class="r input">${fmtNeg(-finTotal*1000)}</td></tr>
+                <tr><td>Menos Socios minoritarios</td><td class="r input">${fmtNeg(-sociosTotal*1000)}</td></tr>
+                <tr class="total"><td>Utilidad total</td><td class="r formula">${fmtCur(utilidadTotal*1000)}</td></tr>
+              </tbody>
+            </table>
+            <div class="cmv-waterfall">
+              <div class="cmv-wf-bar ing" style="height:80px" title="Ingresos">Ing.</div>
+              <div class="cmv-wf-bar costo" style="height:62px" title="Construcción">Const.</div>
+              <div class="cmv-wf-bar costo" style="height:18px" title="Infra">Inf.</div>
+              <div class="cmv-wf-bar costo" style="height:28px" title="OPEX">OPEX</div>
+              <div class="cmv-wf-bar costo" style="height:22px" title="Terreno">Terr.</div>
+              <div class="cmv-wf-bar costo" style="height:8px" title="Fin.">Fin.</div>
+              <div class="cmv-wf-bar costo" style="height:6px" title="Socios">Soc.</div>
+              <div class="cmv-wf-bar util" style="height:24px" title="Utilidad">Util.</div>
+            </div>
+          </div>
+
+          <div class="cmv-section">
+            <div class="cmv-section__head">Supuestos clave (horizonte ${horizonte} años)</div>
+            <table class="cmv-table">
+              <tbody>
+                <tr class="assum"><td>Unidades por tipo (condos, casas, lotes, comercial)</td><td class="r">85, 42, 28, 12</td></tr>
+                <tr class="assum"><td>Precio promedio por unidad</td><td class="r">${fmtCur(precioProm*1000)}</td></tr>
+                <tr class="assum"><td>Costos de construcción por unidad (promedio)</td><td class="r">${fmtCur((costoConstTotal/unidTotal)*1000)}</td></tr>
+                <tr class="assum"><td>Costo de terreno</td><td class="r">${fmtCur(costoTerreno*1000)}</td></tr>
+                <tr class="assum"><td>Tasa de interés y estructura de financiamiento</td><td class="r">TIIE + 350 bps</td></tr>
+                <tr class="assum"><td>Fees desarrollador, constructor, comisiones venta</td><td class="r">5%, 3%, 5%</td></tr>
+                <tr class="assum"><td>Participación socios minoritarios</td><td class="r">${fmtPct1(sociosTotal/ventasBrutas)}</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>`;
         return;
       }
 
