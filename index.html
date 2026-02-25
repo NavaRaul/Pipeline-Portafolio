@@ -767,9 +767,14 @@
 
     /* Plan de Negocios — Línea del tiempo (12 meses) */
     .pnb-timeline{ display:flex; flex-direction:column; gap:0; max-width:100%; }
-    .pnb-timeline__rail{ display:flex; gap:0; overflow-x:auto; padding-bottom:8px; margin-bottom:8px; border-bottom:2px solid var(--color-border); }
-    .pnb-timeline__month{ min-width:140px; max-width:160px; flex:0 0 140px; border:1px solid var(--color-border); border-radius:var(--radius-md); margin-right:8px; background:var(--color-surface); overflow:hidden; }
+    .pnb-timeline__rail{ display:flex; gap:0; overflow-x:auto; padding-bottom:8px; margin-bottom:8px; border-bottom:2px solid var(--color-border); -webkit-overflow-scrolling:touch; }
+    .pnb-timeline__month{ min-width:140px; max-width:160px; flex:0 0 140px; border:1px solid var(--color-border); border-radius:var(--radius-md); margin-right:8px; background:var(--color-surface); overflow:hidden; transition:opacity var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base); }
     .pnb-timeline__month:last-child{ margin-right:0; }
+    .pnb-timeline__month--past{ opacity:0.72; }
+    .pnb-timeline__month--past .pnb-timeline__month-head{ background:var(--color-text-muted); }
+    .pnb-timeline__month--current{ border-color:var(--color-primary); box-shadow:0 0 0 2px var(--color-primary-muted); }
+    .pnb-timeline__month--current .pnb-timeline__month-head{ background:var(--color-primary); }
+    .pnb-timeline__month-now{ display:inline-block; margin-left:4px; padding:1px 6px; border-radius:999px; background:rgba(255,255,255,.35); font-size:10px; font-weight:700; }
     .pnb-timeline__month-head{ background:var(--color-primary); color:#fff; padding:8px 10px; text-align:center; font-weight:800; font-size:var(--fs-12); }
     .pnb-timeline__month-body{ padding:10px; font-size:var(--fs-11); }
     .pnb-timeline__month-row{ display:flex; justify-content:space-between; gap:6px; margin-bottom:6px; }
@@ -827,32 +832,34 @@
     .cmv-var-pos{ color:#065F46; }
     .cmv-var-neg{ color:#991B1B; }
 
-    /* Versiones — Log cronológico modelo financiero */
-    .ver{ font-size:var(--fs-13); font-family:var(--font); max-width:900px; }
-    .ver-table-wrap{ overflow-x:auto; border:1px solid var(--color-border); border-radius:var(--radius-lg); box-shadow:var(--shadow-xs); }
-    .ver-table{ width:100%; border-collapse:collapse; font-size:var(--fs-13); table-layout:fixed; }
+    /* Versiones — Tabla rediseñada, responsiva (tabla + cards en móvil) */
+    .ver{ font-size:var(--fs-13); font-family:var(--font); max-width:100%; }
+    .ver-table-wrap{ overflow-x:auto; overflow-y:visible; border:1px solid var(--color-border); border-radius:var(--radius-lg); box-shadow:var(--shadow-sm); background:var(--color-surface); -webkit-overflow-scrolling:touch; }
+    .ver-table{ width:100%; border-collapse:collapse; font-size:var(--fs-13); table-layout:fixed; min-width:680px; }
     .ver-table thead{ position:sticky; top:0; z-index:2; background:var(--color-bg-soft); }
-    .ver-table thead th{ text-align:left; color:var(--color-text-muted); font-weight:600; font-size:var(--fs-11); padding:var(--sp-12) var(--sp-16); border-bottom:1px solid var(--color-border); }
+    .ver-table thead th{ text-align:left; color:var(--color-text-muted); font-weight:600; font-size:var(--fs-11); text-transform:uppercase; letter-spacing:.04em; padding:var(--sp-12) var(--sp-16); border-bottom:1px solid var(--color-border); }
     .ver-table thead th.num{ text-align:right; }
     .ver-table tbody td{ padding:var(--sp-12) var(--sp-16); border-bottom:1px solid var(--color-border); vertical-align:middle; transition:background var(--transition-fast); }
     .ver-table tbody td.num{ text-align:right; white-space:nowrap; }
     .ver-table tbody tr:nth-child(even):not(.base):not(.subitem){ background:rgba(0,0,0,.02); }
     .ver-table tbody tr:not(.subitem):hover td{ background:var(--color-hover); }
-    .ver-table .ver--idx{ width:2%; min-width:20px; padding:5px 4px; border-right:1px solid var(--color-border); box-sizing:border-box; }
-    .ver-table .ver--fecha{ width:7%; min-width:48px; box-sizing:border-box; }
-    .ver-table .ver--etiqueta{ width:8%; min-width:56px; box-sizing:border-box; }
-    .ver-table .ver--metrica{ width:7%; min-width:52px; box-sizing:border-box; }
-    .ver-table .ver--bps-mov{ width:6%; min-width:44px; box-sizing:border-box; }
-    .ver-table .ver--bps-acum{ width:7%; min-width:52px; box-sizing:border-box; }
-    .ver-table .ver--equity{ width:8%; min-width:60px; box-sizing:border-box; }
-    .ver-table .ver--margen{ width:6%; min-width:44px; box-sizing:border-box; }
-    .ver-table .ver--desc{ width:49%; min-width:160px; word-wrap:break-word; white-space:normal; box-sizing:border-box; }
+    /* Anchos de columna: idx | fecha | etiqueta | metrica | bps-mov | bps-acum | equity | margen | desc */
+    .ver-table .ver--idx{ width:32px; min-width:32px; max-width:32px; padding:var(--sp-12) var(--sp-8); border-right:1px solid var(--color-border); box-sizing:border-box; text-align:center; color:var(--color-text-muted); font-size:var(--fs-12); }
+    .ver-table .ver--fecha{ width:72px; min-width:72px; max-width:72px; box-sizing:border-box; font-size:var(--fs-12); }
+    .ver-table .ver--etiqueta{ width:88px; min-width:88px; max-width:88px; box-sizing:border-box; font-weight:600; }
+    .ver-table .ver--metrica{ width:80px; min-width:80px; max-width:80px; box-sizing:border-box; }
+    .ver-table .ver--bps-mov{ width:72px; min-width:72px; max-width:72px; box-sizing:border-box; }
+    .ver-table .ver--bps-acum{ width:80px; min-width:80px; max-width:80px; box-sizing:border-box; }
+    .ver-table .ver--equity{ width:96px; min-width:96px; max-width:96px; box-sizing:border-box; }
+    .ver-table .ver--margen{ width:72px; min-width:72px; max-width:72px; box-sizing:border-box; }
+    .ver-table .ver--desc{ width:auto; min-width:200px; box-sizing:border-box; word-wrap:break-word; white-space:normal; line-height:var(--lh-relaxed); }
     .ver-table tbody tr.base{ font-weight:700; background:var(--color-surface); }
     .ver-table tbody tr.base td{ background:var(--color-surface); }
+    .ver-table tbody tr.base .ver--etiqueta{ color:var(--color-primary); }
     .ver-table tbody tr:not(.base):nth-child(odd):not(.subitem){ background:var(--color-surface); }
     .ver-table tbody tr.subitem td{ border-bottom:1px solid var(--color-border); }
     .ver-table tbody tr.subitem td:not(.ver--desc){ background:inherit; }
-    .ver-table tbody tr.subitem .ver--desc{ font-size:9pt; color:var(--color-text-muted); padding-left:20px; }
+    .ver-table tbody tr.subitem .ver--desc{ font-size:var(--fs-12); color:var(--color-text-muted); padding-left:var(--sp-24); }
     .ver-pendientes{ margin-top:24px; padding-top:16px; border-top:2px solid var(--color-border); }
     .ver-pendientes__title{ font-size:11pt; font-weight:800; margin-bottom:12px; color:var(--color-text); }
     .ver-pendientes__periodo{ font-size:10pt; font-weight:700; margin:14px 0 6px 0; color:var(--color-text-muted); }
@@ -862,20 +869,48 @@
     .ver-pendientes__list li.ok{ border-left-color:var(--color-success); }
     .ver-pendientes__list li .status{ flex-shrink:0; color:var(--color-success); }
 
-    /* Responsive — Proyecto portafolio (Versiones, Plan neg., Comparativa, MF) */
+    /* Versiones — Vista cards en pantallas pequeñas */
+    @media (max-width: 768px){
+      .ver-table-wrap{ overflow:visible; border-radius:var(--radius-lg); }
+      .ver-table{ display:block; min-width:0; }
+      .ver-table thead{ display:none; }
+      .ver-table tbody{ display:block; }
+      .ver-table tbody tr{ display:block; border:1px solid var(--color-border); border-radius:var(--radius-md); margin-bottom:var(--sp-12); background:var(--color-surface); box-shadow:var(--shadow-xs); overflow:hidden; }
+      .ver-table tbody tr:last-child{ margin-bottom:0; }
+      .ver-table tbody tr.base{ border-left:4px solid var(--color-primary); }
+      .ver-table tbody tr.subitem{ margin-top:calc(-1 * var(--sp-12)); border-top:none; border-radius:0; box-shadow:none; }
+      .ver-table tbody tr.subitem td:not(.ver--desc){ display:none; }
+      .ver-table tbody tr.subitem td.ver--desc{ display:block; padding:var(--sp-8) var(--sp-16) var(--sp-8) var(--sp-24); border-bottom:none; }
+      .ver-table tbody tr.subitem .ver--desc::before{ display:none; }
+      .ver-table tbody td{ display:block; padding:var(--sp-8) var(--sp-16); border-bottom:1px solid var(--color-border); width:100% !important; max-width:none !important; }
+      .ver-table tbody tr td:last-child{ border-bottom:none; }
+      .ver-table tbody td::before{ content:attr(data-label); display:block; font-size:var(--fs-11); font-weight:600; color:var(--color-text-muted); text-transform:uppercase; letter-spacing:.03em; margin-bottom:2px; }
+      .ver-table tbody td.ver--idx::before{ display:none; }
+      .ver-table tbody td.ver--idx{ font-weight:700; color:var(--color-text-muted); padding:var(--sp-12) var(--sp-16); border-bottom:1px solid var(--color-border); }
+      .ver-table tbody tr.base td.ver--idx{ color:var(--color-primary); }
+      .ver-table tbody td.num{ text-align:left; }
+      .ver-table tbody tr:hover td{ background:transparent; }
+      .ver-table tbody tr:hover{ box-shadow:var(--shadow-sm); }
+    }
     @media (max-width: 900px){
-      .ver{ max-width:100%; font-size:9pt; }
-      .ver-table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; margin:0 -2px; }
-      .ver-table{ font-size:9pt; min-width:100%; }
-      .ver-table thead th,.ver-table tbody td{ padding:4px 5px; }
-      .ver-table .ver--idx{ min-width:20px; padding:4px 2px; }
+      .ver{ max-width:100%; }
+      .ver-table-wrap{ margin:0; }
+      .ver-table{ min-width:640px; font-size:var(--fs-12); }
+      .ver-table thead th,.ver-table tbody td{ padding:var(--sp-10) var(--sp-12); }
+      .ver-table .ver--idx{ width:28px; min-width:28px; max-width:28px; padding:var(--sp-10) var(--sp-6); }
+      .ver-table .ver--fecha{ width:64px; min-width:64px; max-width:64px; }
+      .ver-table .ver--etiqueta{ width:80px; min-width:80px; max-width:80px; }
+      .ver-table .ver--metrica{ width:72px; min-width:72px; max-width:72px; }
+      .ver-table .ver--bps-mov{ width:64px; min-width:64px; max-width:64px; }
+      .ver-table .ver--bps-acum{ width:72px; min-width:72px; max-width:72px; }
+      .ver-table .ver--equity{ width:88px; min-width:88px; max-width:88px; }
+      .ver-table .ver--margen{ width:64px; min-width:64px; max-width:64px; }
       .ver-table .ver--desc{ min-width:180px; }
-      .ver-pendientes__title{ font-size:10pt; }
-      .ver-pendientes__periodo,.ver-pendientes__list li{ font-size:9pt; }
+      .ver-pendientes__title{ font-size:var(--fs-14); }
+      .ver-pendientes__periodo,.ver-pendientes__list li{ font-size:var(--fs-12); }
     }
     @media (max-width: 600px){
       .content{ padding:var(--sp-8); }
-      .ver-table .ver--desc{ min-width:140px; }
       .pnb-timeline__month{ min-width:120px; flex:0 0 120px; }
       .pnb-timeline__month-body{ padding:8px; font-size:10px; }
       .pnb-kpis{ grid-template-columns:repeat(2, 1fr); }
@@ -888,7 +923,6 @@
       .mfd-cash__meta{ flex-direction:column; gap:var(--sp-8); }
     }
     @media (max-width: 480px){
-      .ver-table .ver--desc{ min-width:120px; }
       .pnb-timeline__month{ min-width:100px; flex:0 0 100px; }
       .pnb__h1{ font-size:var(--fs-16); }
       .pnb-section__title,.mfd__title{ font-size:11px; }
@@ -3298,6 +3332,11 @@
         const flujoMensualMiles = [ -15, -10, 0, 8, 12, 10, 15, 20, 15, 10, 5, 10 ];
         const unidadesMensuales = [ 8, 12, 15, 18, 14, 16, 20, 22, 18, 14, 10, 12 ];
         const mesesLabel = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+        const planYear = 2026;
+        const now = new Date();
+        const currentYear = now.getFullYear();
+        // Referencia desplazada +2 meses para mostrar dos meses más como transcurridos (demo)
+        const currentMonth0 = Math.min(11, now.getMonth() + 2);
         const ventasMensuales = unidadesMensuales.map(u => Math.round((totalVentasBrutas/167)*u));
         let saldoAcum = saldoInicial;
         const cobranzaMensual = ventasMensuales.map((v,i) => Math.round(v * (0.15 + 0.7 * (i/12))));
@@ -3305,6 +3344,8 @@
         const mesesData = mesesLabel.map((label, i) => {
           const flujo = flujoMensualMiles[i];
           saldoAcum += flujo;
+          const isPast = planYear < currentYear || (planYear === currentYear && i < currentMonth0);
+          const isCurrent = planYear === currentYear && i === currentMonth0;
           return {
             label: label,
             ventas: ventasMensuales[i],
@@ -3312,7 +3353,9 @@
             cobranza: cobranzaMensual[i],
             egresos: egresosMensual[i],
             flujo: flujo,
-            saldo: saldoAcum
+            saldo: saldoAcum,
+            isPast: isPast,
+            isCurrent: isCurrent
           };
         });
         tabBody.innerHTML = `
@@ -3333,10 +3376,11 @@
           </div>
 
           <div class="pnb-section__title">Plan mensual 2026 — 12 meses</div>
+          <p class="muted small" style="margin-bottom:10px;">Meses ya transcurridos en gris; mes actual marcado con <strong>Actual</strong>.</p>
           <div class="pnb-timeline__rail">
             ${mesesData.map(m => `
-            <div class="pnb-timeline__month">
-              <div class="pnb-timeline__month-head">${m.label} 2026</div>
+            <div class="pnb-timeline__month ${m.isPast ? "pnb-timeline__month--past" : ""} ${m.isCurrent ? "pnb-timeline__month--current" : ""}">
+              <div class="pnb-timeline__month-head">${m.label} ${planYear}${m.isCurrent ? ' <span class="pnb-timeline__month-now">Actual</span>' : ""}</div>
               <div class="pnb-timeline__month-body">
                 <div class="pnb-timeline__month-row"><span class="k">Ventas</span><span class="v">${fmtK(m.ventas)}</span></div>
                 <div class="pnb-timeline__month-row"><span class="k">Unidades</span><span class="v">${m.unid}</span></div>
@@ -3437,11 +3481,12 @@
             { text: "Documentar supuestos de precio por tipología", status: "" }
           ]}
         ];
-        const thead = `<thead><tr><th class="ver--idx"></th><th class="ver--fecha">Fecha corte</th><th class="ver--etiqueta">Versión / Etiqueta</th><th class="num ver--metrica">Métrica principal (%)</th><th class="num ver--bps-mov">Var. por mov. (BPS)</th><th class="num ver--bps-acum">Var. acum. vs Base (BPS)</th><th class="num ver--equity">Pico capital / Equity ($)</th><th class="num ver--margen">Margen (%)</th><th class="ver--desc">Descripción / Desglose</th></tr></thead>`;
+        const labels = { idx:"", fecha:"Fecha corte", etiqueta:"Versión", metrica:"Métrica %", bpsMov:"Var. mov. (BPS)", bpsAcum:"Var. acum. (BPS)", equity:"Equity pico", margen:"Margen %", desc:"Descripción" };
+        const thead = `<thead><tr><th class="ver--idx" scope="col"></th><th class="ver--fecha" scope="col">Fecha corte</th><th class="ver--etiqueta" scope="col">Versión</th><th class="num ver--metrica" scope="col">Métrica %</th><th class="num ver--bps-mov" scope="col">Var. mov.</th><th class="num ver--bps-acum" scope="col">Var. acum.</th><th class="num ver--equity" scope="col">Equity pico</th><th class="num ver--margen" scope="col">Margen %</th><th class="ver--desc" scope="col">Descripción / Desglose</th></tr></thead>`;
         const tbodyRows = versionRows.map((r, i) => {
-          if (r.subitem) return `<tr class="subitem"><td class="ver--idx"></td><td class="ver--fecha"></td><td class="ver--etiqueta"></td><td class="num ver--metrica"></td><td class="num ver--bps-mov"></td><td class="num ver--bps-acum"></td><td class="num ver--equity"></td><td class="num ver--margen"></td><td class="ver--desc">${escapeHtml(r.desc)}</td></tr>`;
+          if (r.subitem) return `<tr class="subitem"><td class="ver--idx" data-label=""></td><td class="ver--fecha" data-label="${labels.fecha}"></td><td class="ver--etiqueta" data-label="${labels.etiqueta}"></td><td class="num ver--metrica" data-label="${labels.metrica}"></td><td class="num ver--bps-mov" data-label="${labels.bpsMov}"></td><td class="num ver--bps-acum" data-label="${labels.bpsAcum}"></td><td class="num ver--equity" data-label="${labels.equity}"></td><td class="num ver--margen" data-label="${labels.margen}"></td><td class="ver--desc" data-label="${labels.desc}">${escapeHtml(r.desc)}</td></tr>`;
           const cls = r.base ? "base" : "";
-          return `<tr class="${cls}"><td class="ver--idx">${i+1}</td><td class="ver--fecha">${escapeHtml(r.fechaCorte||"")}</td><td class="ver--etiqueta">${escapeHtml(r.etiqueta||"")}</td><td class="num ver--metrica">${fmtPct2(r.metrica)}</td><td class="num ver--bps-mov">${fmtBps(r.bpsMov)}</td><td class="num ver--bps-acum">${fmtBps(r.bpsAcum)}</td><td class="num ver--equity">${fmtEquity(r.equityPico)}</td><td class="num ver--margen">${fmtPct2(r.margen)}</td><td class="ver--desc">${escapeHtml(r.desc)}</td></tr>`;
+          return `<tr class="${cls}"><td class="ver--idx" data-label="">${i+1}</td><td class="ver--fecha" data-label="${labels.fecha}">${escapeHtml(r.fechaCorte||"")}</td><td class="ver--etiqueta" data-label="${labels.etiqueta}">${escapeHtml(r.etiqueta||"")}</td><td class="num ver--metrica" data-label="${labels.metrica}">${fmtPct2(r.metrica)}</td><td class="num ver--bps-mov" data-label="${labels.bpsMov}">${fmtBps(r.bpsMov)}</td><td class="num ver--bps-acum" data-label="${labels.bpsAcum}">${fmtBps(r.bpsAcum)}</td><td class="num ver--equity" data-label="${labels.equity}">${fmtEquity(r.equityPico)}</td><td class="num ver--margen" data-label="${labels.margen}">${fmtPct2(r.margen)}</td><td class="ver--desc" data-label="${labels.desc}">${escapeHtml(r.desc)}</td></tr>`;
         }).join("");
         const pendientesHtml = pendientesByPeriodo.map(p => `
           <div class="ver-pendientes__periodo">${escapeHtml(p.periodo)}</div>
