@@ -603,6 +603,85 @@
     .mf-toast{ position:fixed; bottom:16px; right:16px; background:var(--color-primary); color:#fff; padding:10px 12px; border-radius:var(--radius-lg); font-size:var(--fs-12); font-weight:800; opacity:0; transform:translateY(8px); transition:all .18s ease; pointer-events:none; z-index:99999; }
     .mf-toast.show{ opacity:1; transform:translateY(0); }
 
+    /* MF Dashboard — Proyecto portafolio (resumen ejecutivo) */
+    .mfd{ padding:0; font-size:var(--fs-13); }
+    .mfd__section{ margin-bottom:var(--sp-24); }
+    .mfd__section:last-child{ margin-bottom:0; }
+    .mfd__title{ font-size:var(--fs-12); font-weight:800; color:var(--color-text-muted); text-transform:uppercase; letter-spacing:.04em; margin-bottom:var(--sp-12); }
+    .mfd-kpis{ display:grid; grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); gap:var(--sp-12); }
+    .mfd-kpi{ background:var(--color-bg-soft); border:1px solid var(--color-border); border-radius:var(--radius-md); padding:var(--sp-12); }
+    .mfd-kpi__label{ font-size:var(--fs-11); color:var(--color-text-muted); font-weight:700; margin-bottom:4px; }
+    .mfd-kpi__value{ font-size:var(--fs-18); font-weight:800; color:var(--color-text); }
+    .mfd-kpi__base{ font-size:var(--fs-12); color:var(--color-text-muted); margin-top:4px; }
+    .mfd-kpi__delta{ font-size:var(--fs-12); font-weight:700; margin-top:4px; }
+    .mfd-kpi__delta.pos{ color:var(--color-success); }
+    .mfd-kpi__delta.neg{ color:var(--color-danger); }
+    .mfd-kpi__delta.neu{ color:var(--color-text-muted); }
+    .mfd-table{ width:100%; border-collapse:collapse; font-size:var(--fs-12); }
+    .mfd-table th,.mfd-table td{ padding:8px 10px; text-align:left; border-bottom:1px solid var(--color-border); }
+    .mfd-table th{ color:var(--color-text-muted); font-weight:700; }
+    .mfd-table .num,.mfd-table .delta{ text-align:right; }
+    .mfd-waterfall{ display:flex; flex-wrap:wrap; align-items:flex-end; gap:4px; margin:var(--sp-12) 0; min-height:80px; }
+    .mfd-wf__bar{ min-width:32px; border-radius:var(--radius-sm); font-size:10px; font-weight:800; color:#fff; display:flex; align-items:flex-end; justify-content:center; padding:4px 2px; }
+    .mfd-wf__bar.neg{ background:var(--color-danger); }
+    .mfd-wf__bar.pos{ background:var(--color-success); }
+    .mfd-wf__label{ font-size:var(--fs-11); color:var(--color-text-muted); margin-top:4px; }
+    .mfd-sens{ display:grid; grid-template-columns:repeat(auto-fill, minmax(160px, 1fr)); gap:var(--sp-12); }
+    .mfd-sens__item{ background:var(--color-bg-soft); border:1px solid var(--color-border); border-radius:var(--radius-md); padding:var(--sp-12); }
+    .mfd-sens__item strong{ display:block; font-size:var(--fs-12); margin-bottom:4px; }
+    .mfd-sens__item span{ font-size:var(--fs-12); color:var(--color-text-muted); }
+    .mfd-cash{ background:var(--color-bg-soft); border:1px solid var(--color-border); border-radius:var(--radius-md); padding:var(--sp-16); margin-top:var(--sp-12); }
+    .mfd-cash__chart{ height:120px; display:flex; align-items:flex-end; gap:2px; margin-bottom:var(--sp-12); }
+    .mfd-cash__bar{ flex:1; min-width:4px; background:var(--color-primary); opacity:0.7; border-radius:2px; }
+    .mfd-cash__bar.neg{ background:var(--color-danger); opacity:0.6; }
+    .mfd-cash__meta{ display:flex; flex-wrap:wrap; gap:var(--sp-16); font-size:var(--fs-12); }
+    .mfd-cash__meta span{ color:var(--color-text-muted); }
+    .mfd-cash__meta strong{ color:var(--color-text); }
+    @media (max-width:900px){ .mfd-kpis{ grid-template-columns:repeat(2, 1fr); } }
+
+    /* Plan de Negocios — Vista ejecutiva */
+    .pnb{ font-size:var(--fs-13); max-width:1200px; }
+    .pnb__h1{ font-size:var(--fs-18); font-weight:800; margin:0 0 4px 0; }
+    .pnb__sub{ font-size:var(--fs-12); color:var(--color-text-muted); margin-bottom:var(--sp-16); }
+    .pnb-section{ margin-bottom:var(--sp-20); }
+    .pnb-section__title{ font-size:var(--fs-12); font-weight:800; color:var(--color-text-muted); text-transform:uppercase; letter-spacing:.04em; margin-bottom:var(--sp-8); }
+    .pnb-kpis{ display:grid; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)); gap:var(--sp-10); }
+    .pnb-kpi{ background:var(--color-bg-soft); border:1px solid var(--color-border); border-radius:var(--radius-md); padding:var(--sp-10); }
+    .pnb-kpi__label{ font-size:var(--fs-11); color:var(--color-text-muted); font-weight:700; }
+    .pnb-kpi__value{ font-size:var(--fs-16); font-weight:800; margin-top:2px; }
+    .pnb-table{ width:100%; border-collapse:collapse; font-size:var(--fs-12); }
+    .pnb-table th,.pnb-table td{ padding:6px 10px; text-align:left; border-bottom:1px solid var(--color-border); }
+    .pnb-table th{ color:var(--color-text-muted); font-weight:700; background:var(--color-bg-soft); }
+    .pnb-table .r{ text-align:right; }
+    .pnb-table .total{ font-weight:800; background:var(--color-bg-soft); }
+    .pnb-donut{ width:140px; height:140px; border-radius:50%; margin:0 auto; }
+    .pnb-chart-row{ display:flex; gap:var(--sp-16); align-items:flex-start; flex-wrap:wrap; }
+    .pnb-chart-row .legend{ font-size:var(--fs-11); margin-top:8px; }
+    .pnb-chart-row .legend span{ display:block; margin-bottom:2px; }
+    .pnb-bars{ display:flex; align-items:flex-end; gap:3px; height:100px; }
+    .pnb-bar{ flex:1; min-width:6px; border-radius:2px; background:var(--color-primary); opacity:0.8; }
+    .pnb-bar.neg{ background:var(--color-danger); opacity:0.7; }
+    .pnb-risks{ display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-12); }
+    @media (max-width:768px){ .pnb-risks{ grid-template-columns:1fr; } }
+
+    /* Plan de Negocios — Línea del tiempo (12 meses) */
+    .pnb-timeline{ display:flex; flex-direction:column; gap:0; max-width:100%; }
+    .pnb-timeline__rail{ display:flex; gap:0; overflow-x:auto; padding-bottom:8px; margin-bottom:8px; border-bottom:2px solid var(--color-border); }
+    .pnb-timeline__month{ min-width:140px; max-width:160px; flex:0 0 140px; border:1px solid var(--color-border); border-radius:var(--radius-md); margin-right:8px; background:var(--color-surface); overflow:hidden; }
+    .pnb-timeline__month:last-child{ margin-right:0; }
+    .pnb-timeline__month-head{ background:var(--color-primary); color:#fff; padding:8px 10px; text-align:center; font-weight:800; font-size:var(--fs-12); }
+    .pnb-timeline__month-body{ padding:10px; font-size:var(--fs-11); }
+    .pnb-timeline__month-row{ display:flex; justify-content:space-between; gap:6px; margin-bottom:6px; }
+    .pnb-timeline__month-row:last-child{ margin-bottom:0; }
+    .pnb-timeline__month-row .k{ color:var(--color-text-muted); }
+    .pnb-timeline__month-row .v{ font-weight:700; text-align:right; }
+    .pnb-timeline__month-row .v.neg{ color:var(--color-danger); }
+    .pnb-timeline__month-row .v.pos{ color:var(--color-success); }
+    .pnb-timeline__summary{ display:grid; grid-template-columns:repeat(auto-fill, minmax(120px, 1fr)); gap:var(--sp-10); margin-bottom:var(--sp-16); }
+    .pnb-timeline__summary .pnb-kpi{ margin:0; }
+    .pnb-timeline__foot{ display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-16); margin-top:var(--sp-20); }
+    @media (max-width:900px){ .pnb-timeline__foot{ grid-template-columns:1fr; } }
+
     /* Kanban: 5 columnas en una sola línea (Land Bank, Perfil, Prefact, Fact, No Go) */
     .kanban{
       display:grid;
@@ -1609,6 +1688,9 @@
       const d = new Date(iso);
       return d.toLocaleString("es-MX", { year:"numeric", month:"short", day:"2-digit", hour:"2-digit", minute:"2-digit" });
     }
+    function fmtPct(x){ if(x==null||Number.isNaN(x)) return "—"; return (x*100).toFixed(2)+"%"; }
+    function fmtBps(bps){ if(bps==null||Number.isNaN(bps)) return "—"; return (bps>0?"+":"")+Math.round(bps)+" bps"; }
+    function fmtMoney(n, c){ if(n==null||Number.isNaN(n)) return "—"; return new Intl.NumberFormat("es-MX",{style:"currency",currency:c||"MXN",maximumFractionDigits:0}).format(n); }
 
     /* =========================
        Router (views)
@@ -1616,6 +1698,7 @@
     const state = {
       view: "dashboard",
       selectedProjectId: null,
+      projectViewMode: null,
       projectTab: "modelo-financiero",
       modeloSubTab: "vista-general",
       otrosSubTab: "resumen",
@@ -1715,6 +1798,7 @@
     function setView(view){
       state.view = view;
       state.selectedProjectId = null;
+      state.projectViewMode = null;
       state.projectTab = "modelo-financiero";
       state.modeloSubTab = "vista-general";
       state.otrosSubTab = "resumen";
@@ -1780,8 +1864,8 @@
 
     function stageBadge(stage){
       const kind =
-        stage === STAGES.LANDBANK ? "info" :
-        stage === STAGES.PERFIL ? "info" :
+        stage === STAGES.LANDBANK ? "" :
+        stage === STAGES.PERFIL ? "" :
         stage === STAGES.PREFACT ? "warn" :
         stage === STAGES.FACT ? "danger" :
         "success";
@@ -1793,7 +1877,7 @@
       const kind =
         status === GATE_STATUS.APPROVED ? "success" :
         status === GATE_STATUS.CONDITIONAL ? "warn" :
-        status === GATE_STATUS.REJECTED ? "danger" : "info";
+        status === GATE_STATUS.REJECTED ? "danger" : "";
       return badge(kind, status);
     }
 
@@ -1812,6 +1896,12 @@
        Views
        ========================= */
     function render(){
+      if(state.selectedProjectId && state.projectViewMode){
+        renderProjectDetail();
+        const topActions = document.querySelector(".top-actions");
+        if (topActions) topActions.style.display = "none";
+        return;
+      }
       if(state.view === "dashboard") renderDashboard();
       else if(state.view === "pipeline") renderPipeline();
       else if(state.view === "reserva") renderReservaTerritorial();
@@ -2715,6 +2805,7 @@
        ========================= */
     function openProject(id){
       state.selectedProjectId = id;
+      state.projectViewMode = state.view === "pipeline" ? "pipeline" : "portafolio";
       state.projectTab = "modelo-financiero";
       state.modeloSubTab = "vista-general";
       state.otrosSubTab = "resumen";
@@ -2723,35 +2814,84 @@
 
     function renderProjectDetail(){
       const p = db.projects.find(x=>x.id===state.selectedProjectId);
-      if(!p){ setView("projects"); return; }
+      if(!p){
+        state.selectedProjectId = null;
+        state.projectViewMode = null;
+        if(state.view === "pipeline") setView("pipeline");
+        else setView("projects");
+        return;
+      }
+      if(state.projectViewMode === "pipeline") renderProjectPipeline();
+      else renderProjectPortafolio();
+    }
 
-      setCrumbs("Proyectos", `${p.code} — ${p.name}`);
-
+    function renderProjectPipeline(){
+      const p = db.projects.find(x=>x.id===state.selectedProjectId);
+      if(!p) return;
+      setCrumbs("Pipeline", `Proyecto pipeline · ${escapeHtml(p.name)}`);
       content.innerHTML = `
         <div class="toolbar">
           <div class="left">
             <div class="pill">
-              <b>${escapeHtml(p.code)}</b>
-              <span class="muted">— ${escapeHtml(p.name)}</span>
+              <b>Proyecto pipeline</b>
+              <span class="muted">— ${escapeHtml(p.code)} · ${escapeHtml(p.name)}</span>
             </div>
-            ${stageBadge(p.stage)}
-            ${gateBadge(p.gateStatus)}
+          </div>
+          <div class="right">
+            <button type="button" class="btn btn-ghost" onclick="setView('pipeline')">Volver al Pipeline</button>
+          </div>
+        </div>
+        <div class="card" style="margin-top:12px;">
+          <h2>Proyecto pipeline</h2>
+          <div class="muted small">Vista independiente del proyecto desde Pipeline. Los cambios aquí son específicos de esta pantalla.</div>
+          <div class="divider"></div>
+          <div class="grid-2">
+            <div>
+              <div class="label">Código</div>
+              <div><b>${escapeHtml(p.code)}</b></div>
+            </div>
+            <div>
+              <div class="label">Proyecto</div>
+              <div><b>${escapeHtml(p.name)}</b></div>
+            </div>
+            <div>
+              <div class="label">Ubicación</div>
+              <div>${escapeHtml(p.location)}</div>
+            </div>
+            <div>
+              <div class="label">Etapa</div>
+              <div>${escapeHtml(p.stage)}</div>
+            </div>
+          </div>
+        </div>
+      `;
+      const topActions = document.querySelector(".top-actions");
+      if (topActions) topActions.style.display = "none";
+    }
+
+    function renderProjectPortafolio(){
+      const p = db.projects.find(x=>x.id===state.selectedProjectId);
+      if(!p) return;
+      setCrumbs("Portafolio", `Proyecto portafolio · ${escapeHtml(p.name)}`);
+      content.innerHTML = `
+        <div class="toolbar">
+          <div class="left">
+            <div class="pill">
+              <b>Proyecto portafolio</b>
+              <span class="muted">— ${escapeHtml(p.code)} · ${escapeHtml(p.name)}</span>
+            </div>
+          </div>
+          <div class="right">
+            <button type="button" class="btn btn-ghost" onclick="setView('projects')">Volver al listado</button>
           </div>
         </div>
 
         <div class="tabs">
           ${tabBtn("modelo-financiero","Modelo Financiero")}
           ${tabBtn("plan-negocios","Plan de negocios")}
-          ${tabBtn("otros","Otros (Gestión proyecto)")}
+          ${tabBtn("versiones","Versiones")}
+          ${tabBtn("comparativa-movimientos","Comparativa de Movimientos")}
         </div>
-        ${state.projectTab === "otros" ? `
-        <div class="tabs tabs-sub" style="margin-top:8px;">
-          ${tabBtnSubOtros("resumen","Resumen")}
-          ${tabBtnSubOtros("checklist","Checklist")}
-          ${tabBtnSubOtros("comite","Comité / Gates")}
-          ${tabBtnSubOtros("timeline","Timeline")}
-        </div>
-        ` : ""}
         <div id="tabBody"></div>
       `;
 
@@ -2795,24 +2935,288 @@
       const tabBody = document.getElementById("tabBody");
       if(!tabBody || !p) return;
 
-      /* ----- Modelo Financiero: módulo Control MF (template + init) ----- */
+      /* ----- Modelo Financiero: dashboard ejecutivo (3 niveles) ----- */
       if(state.projectTab === "modelo-financiero"){
-        const tpl = document.getElementById("mf-module-tpl");
-        if (tpl) {
-          tabBody.innerHTML = tpl.innerHTML;
-          if (typeof window.initMFControl === "function") window.initMFControl(tabBody, p.id);
-        } else {
-          tabBody.innerHTML = `<div class="card"><h2>Modelo Financiero</h2><div class="muted">Módulo no disponible.</div></div>`;
-        }
+        const mfProjects = buildMFProjectsFromDb();
+        const mfProj = mfProjects.find(x => x.id === p.id);
+        const v = mfProj ? (mfProj.versions.find(x => x.vigente) || mfProj.versions[mfProj.versions.length-1]) : null;
+        const uw = mfProj ? (mfProj.versions.find(x => x.id === (mfProj.uwVersionId||"BC-01")) || mfProj.versions[0]) : null;
+        const cur = mfProj ? (mfProj.currency || "MXN") : "MXN";
+        const movs = (v && v.movements) ? v.movements.filter(m => m.category !== "Base") : [];
+        let cumBps = 0;
+        const waterfallBars = movs.map(m => { cumBps += m.bps; return { name: m.name, bps: m.bps, cum: cumBps }; });
+        const tirDeltaBps = v && uw ? Math.round((v.irr - uw.irr)*10000) : 0;
+        const margenDeltaPts = v && uw ? ((v.margin - uw.margin)*100).toFixed(1) : "—";
+        const dur = (v && v.durationMonths) || 30;
+        const fakeMonthly = []; let acc = 0; const step = 1; for(let i = 0; i < Math.min(dur, 36); i++){ acc += (i < 14 ? -step : 0.7*step); fakeMonthly.push(acc); }
+        const peakMonth = fakeMonthly.reduce((best, val, i) => val < (fakeMonthly[best]||0) ? i : best, 0);
+        const breakevenMonth = fakeMonthly.findIndex(x => x >= 0);
+        const tirPositiveMonth = breakevenMonth >= 0 ? breakevenMonth : Math.min(dur, 35);
+        const maxAbsCash = Math.max(...fakeMonthly.map(Math.abs), 1);
+        const kpiDeltaClass = (val) => val > 0 ? "pos" : val < 0 ? "neg" : "neu";
+        const kpiDeltaStr = (val, isBps) => val == null || val === "—" ? "—" : (isBps ? (val > 0 ? "+" : "")+Math.round(val)+" bps" : (val > 0 ? "+" : "")+val+" pts");
+        tabBody.innerHTML = !mfProj || !v || !uw ? `<div class="card"><p class="muted">Sin datos de modelo financiero para este proyecto.</p></div>` : `
+        <div class="mfd">
+          <div class="mfd__section">
+            <div class="mfd__title">Nivel 1 — Vista ejecutiva (resumen estratégico)</div>
+            <p class="muted small" style="margin-bottom:12px;">¿El proyecto va mejor, igual o peor que el plan aprobado?</p>
+            <div class="mfd-kpis">
+              <div class="mfd-kpi">
+                <div class="mfd-kpi__label">TIR Proyecto (%)</div>
+                <div class="mfd-kpi__value">${fmtPct(v.irr)}</div>
+                <div class="mfd-kpi__base">Base: ${fmtPct(uw.irr)}</div>
+                <div class="mfd-kpi__delta ${kpiDeltaClass(tirDeltaBps)}">${kpiDeltaStr(tirDeltaBps, true)}</div>
+              </div>
+              <div class="mfd-kpi">
+                <div class="mfd-kpi__label">VAN</div>
+                <div class="mfd-kpi__value">${fmtMoney(v.poc, cur)}</div>
+                <div class="mfd-kpi__base">Base: ${fmtMoney(uw.poc, cur)}</div>
+                <div class="mfd-kpi__delta ${kpiDeltaClass((v.poc||0)-(uw.poc||0))}">${fmtMoney((v.poc||0)-(uw.poc||0), cur)}</div>
+              </div>
+              <div class="mfd-kpi">
+                <div class="mfd-kpi__label">Margen operativo (%)</div>
+                <div class="mfd-kpi__value">${fmtPct(v.margin)}</div>
+                <div class="mfd-kpi__base">Base: ${fmtPct(uw.margin)}</div>
+                <div class="mfd-kpi__delta ${kpiDeltaClass(parseFloat(margenDeltaPts))}">${margenDeltaPts !== "—" ? (parseFloat(margenDeltaPts)>0?"+":"")+margenDeltaPts+" pts" : "—"}</div>
+              </div>
+              <div class="mfd-kpi">
+                <div class="mfd-kpi__label">Utilidad neta</div>
+                <div class="mfd-kpi__value">—</div>
+                <div class="mfd-kpi__base">Base: —</div>
+                <div class="mfd-kpi__delta neu">—</div>
+              </div>
+              <div class="mfd-kpi">
+                <div class="mfd-kpi__label">Cash required (equity rest.)</div>
+                <div class="mfd-kpi__value">${fmtMoney(v.poc, cur)}</div>
+                <div class="mfd-kpi__base">Base: ${fmtMoney(uw.poc, cur)}</div>
+                <div class="mfd-kpi__delta ${kpiDeltaClass((v.poc||0)-(uw.poc||0))}">${fmtMoney((v.poc||0)-(uw.poc||0), cur)}</div>
+              </div>
+              <div class="mfd-kpi">
+                <div class="mfd-kpi__label">DSCR</div>
+                <div class="mfd-kpi__value">—</div>
+                <div class="mfd-kpi__base">(si aplica crédito puente)</div>
+                <div class="mfd-kpi__delta neu">—</div>
+              </div>
+              <div class="mfd-kpi">
+                <div class="mfd-kpi__label">Duración (meses)</div>
+                <div class="mfd-kpi__value">${v.durationMonths != null ? v.durationMonths : "—"}</div>
+                <div class="mfd-kpi__base">Base: ${uw.durationMonths != null ? uw.durationMonths : "—"}</div>
+                <div class="mfd-kpi__delta ${kpiDeltaClass((v.durationMonths||0)-(uw.durationMonths||0))}">${(v.durationMonths!=null&&uw.durationMonths!=null) ? ((v.durationMonths-uw.durationMonths)>0?"+":"")+(v.durationMonths-uw.durationMonths)+" mes" : "—"}</div>
+              </div>
+            </div>
+          </div>
+          <div class="mfd__section">
+            <div class="mfd__title">Nivel 2 — Análisis de variaciones (driver-based)</div>
+            <div class="card" style="margin-bottom:16px;">
+              <h3 style="font-size:var(--fs-14); margin:0 0 10px 0;">Waterfall variación TIR</h3>
+              <div class="muted small" style="margin-bottom:10px;">Descomposición por drivers: precio, absorción, costo construcción, indirectos, financiamiento, calendario.</div>
+              ${waterfallBars.length ? `
+              <div class="mfd-waterfall">
+                ${waterfallBars.map((b,i) => `<div style="display:flex; flex-direction:column; align-items:center;"><div class="mfd-wf__bar ${b.bps >= 0 ? "pos" : "neg"}" style="height:${Math.min(80, 24+Math.abs(b.bps)*0.5)}px" title="${escapeHtml(b.name)}">${b.bps >= 0 ? "+" : ""}${b.bps}</div><div class="mfd-wf__label">${escapeHtml(b.name.slice(0,12))}</div></div>`).join("")}
+              </div>
+              <table class="mfd-table"><thead><tr><th>Driver</th><th class="num">Δ bps</th><th class="num">Acum.</th></tr></thead><tbody>
+              ${waterfallBars.map(b => `<tr><td>${escapeHtml(b.name)}</td><td class="num">${b.bps>=0?"+":""}${b.bps} bps</td><td class="num">${b.cum>=0?"+":""}${b.cum} bps</td></tr>`).join("")}
+              </tbody></table>
+              ` : `<p class="muted small">Sin movimientos vs base.</p>`}
+            </div>
+            <div class="mfd__title" style="margin-top:16px;">Sensibilidades clave</div>
+            <div class="mfd-sens">
+              <div class="mfd-sens__item"><strong>Precio ±5%</strong><span>TIR: ${fmtPct((v.irr||0)+0.05*0.12)} / ${fmtPct((v.irr||0)-0.05*0.12)}</span></div>
+              <div class="mfd-sens__item"><strong>Costo ±5%</strong><span>TIR: ${fmtPct((v.irr||0)-0.05*0.10)} / ${fmtPct((v.irr||0)+0.05*0.10)}</span></div>
+              <div class="mfd-sens__item"><strong>Tiempo +3 meses</strong><span>Δ TIR aprox. ${fmtBps(-20)}</span></div>
+              <div class="mfd-sens__item"><strong>Pto. equilibrio precio/m²</strong><span>— (módulo en construcción)</span></div>
+            </div>
+          </div>
+          <div class="mfd__section">
+            <div class="mfd__title">Nivel 3 — Liquidez y riesgo</div>
+            <div class="card">
+              <h3 style="font-size:var(--fs-14); margin:0 0 10px 0;">Curva de flujo de caja</h3>
+              <div class="muted small">Flujo mensual acumulado (indicativo). Pico de inversión y momento de recuperación.</div>
+              <div class="mfd-cash">
+                <div class="mfd-cash__chart">
+                  ${fakeMonthly.slice(0,36).map((val,i) => `<div class="mfd-cash__bar ${val < 0 ? "neg" : ""}" style="height:${Math.max(6, 20 + 80 * (Math.abs(val) / maxAbsCash))}px" title="Mes ${i+1}"></div>`).join("")}
+                </div>
+                <div class="mfd-cash__meta">
+                  <span>Pico de inversión:</span> <strong>Mes ${peakMonth+1}</strong>
+                  <span>Mes breakeven:</span> <strong>${breakevenMonth >= 0 ? "Mes "+(breakevenMonth+1) : "—"}</strong>
+                  <span>Mes TIR positiva:</span> <strong>Mes ${tirPositiveMonth+1}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`;
         return;
       }
 
-      /* ----- Plan de negocios ----- */
+      /* ----- Plan de negocios — Vista ejecutiva (Executive Summary) ----- */
       if(state.projectTab === "plan-negocios"){
+        const fmtK = (n) => n == null || Number.isNaN(n) ? "—" : new Intl.NumberFormat("es-MX",{maximumFractionDigits:0}).format(Math.round(n));
+        const mixVentas = [
+          { segmento: "Vivienda (casas)", unidades: 42, m2: 6_300, monto: 189_000, pct: 38 },
+          { segmento: "Departamentos", unidades: 85, m2: 8_500, monto: 212_500, pct: 43 },
+          { segmento: "Lotes residenciales", unidades: 28, m2: 14_000, monto: 56_000, pct: 11 },
+          { segmento: "Comercial", unidades: 12, m2: 2_400, monto: 28_800, pct: 6 },
+          { segmento: "Turismo", unidades: 0, m2: 0, monto: 0, pct: 2 }
+        ];
+        const totalVentasBrutas = 486_300, participacionAportante = 48_630, ventasNetas = 437_670;
+        const costoConstruccion = 262_602, urbanizacion = 43_767, comisiones = 21_884, costosFinancieros = 13_130;
+        const gastosOperacion = 26_260, developerFee = 21_884, utilidadNeta = 41_543;
+        const margenNeto = ventasNetas ? (utilidadNeta/ventasNetas*100).toFixed(1) : "—";
+        const saldoInicial = 45_000, cobranza = 320_000, egresosOp = 280_000, remanenteOp = 40_000;
+        const ingresoPuente = 80_000, amortPuente = 35_000, flujoNetoFin = 85_000, saldoFinal = 130_000;
+        const deudaInicial = 120_000, deudaFinal = 165_000, disposiciones = 80_000, amortizaciones = 35_000;
+        const activosTotales = 580_000, pasivosTotales = 320_000, capitalContable = 230_000, utilidadEjercicio = 41_543;
+        const fasesActivas = [
+          { fase: "Fase 1 — Residencial", unidades: 127, producto: "Casas + Depas" },
+          { fase: "Fase 2 — Lotes", unidades: 28, producto: "Lotes" },
+          { fase: "Fase 3 — Comercial", unidades: 12, producto: "Locales" }
+        ];
+        const comparativo = [
+          { metrica: "Unidades vendidas", actual: 167, anterior: 142, var: "+17.6%" },
+          { metrica: "Ingresos (miles)", actual: 486_300, anterior: 418_000, var: "+16.4%" },
+          { metrica: "Ticket promedio (miles)", actual: "2,912", anterior: "2,944", var: "-1.1%" }
+        ];
+        const premisas = [
+          { k: "Tipo de cambio", v: "20.50 MXN/USD" },
+          { k: "Inflación en costos", v: "5.2% anual" },
+          { k: "Tasa de referencia (TIIE)", v: "11.25%" },
+          { k: "Incremento anual precios", v: "4.5% por segmento" },
+          { k: "Plusvalía asumida", v: "3.0% anual" }
+        ];
+        const flujoMensualMiles = [ -15, -10, 0, 8, 12, 10, 15, 20, 15, 10, 5, 10 ];
+        const unidadesMensuales = [ 8, 12, 15, 18, 14, 16, 20, 22, 18, 14, 10, 12 ];
+        const mesesLabel = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+        const ventasMensuales = unidadesMensuales.map(u => Math.round((totalVentasBrutas/167)*u));
+        let saldoAcum = saldoInicial;
+        const cobranzaMensual = ventasMensuales.map((v,i) => Math.round(v * (0.15 + 0.7 * (i/12))));
+        const egresosMensual = ventasMensuales.map((v,i) => Math.round((costoConstruccion+urbanizacion+comisiones+gastosOperacion)/12 * (0.8 + 0.4*(i/12))));
+        const mesesData = mesesLabel.map((label, i) => {
+          const flujo = flujoMensualMiles[i];
+          saldoAcum += flujo;
+          return {
+            label: label,
+            ventas: ventasMensuales[i],
+            unid: unidadesMensuales[i],
+            cobranza: cobranzaMensual[i],
+            egresos: egresosMensual[i],
+            flujo: flujo,
+            saldo: saldoAcum
+          };
+        });
+        tabBody.innerHTML = `
+        <div class="pnb pnb-timeline">
+          <h1 class="pnb__h1">Plan de negocios anual <strong style="color:var(--color-primary);">2026</strong></h1>
+          <p class="pnb__sub">Vista por mes (12 meses). <strong>Año 2026.</strong> Cifras en miles MXN. Desplaza horizontalmente para ver todos los meses.</p>
+
+          <div class="pnb-section">
+            <div class="pnb-section__title">Resumen anual 2026 (totales del plan)</div>
+            <div class="pnb-timeline__summary">
+              <div class="pnb-kpi"><div class="pnb-kpi__label">Ventas brutas</div><div class="pnb-kpi__value">${fmtK(totalVentasBrutas)}</div><div class="pnb-kpi__label" style="margin-top:2px;">167 un.</div></div>
+              <div class="pnb-kpi"><div class="pnb-kpi__label">Ventas netas</div><div class="pnb-kpi__value">${fmtK(ventasNetas)}</div></div>
+              <div class="pnb-kpi"><div class="pnb-kpi__label">Utilidad neta</div><div class="pnb-kpi__value">${fmtK(utilidadNeta)}</div><div class="pnb-kpi__label" style="margin-top:2px;">Margen ${margenNeto}%</div></div>
+              <div class="pnb-kpi"><div class="pnb-kpi__label">Flujo caja año</div><div class="pnb-kpi__value">${fmtK(flujoNetoFin)}</div></div>
+              <div class="pnb-kpi"><div class="pnb-kpi__label">Saldo final caja</div><div class="pnb-kpi__value">${fmtK(saldoFinal)}</div></div>
+              <div class="pnb-kpi"><div class="pnb-kpi__label">Absorción prom.</div><div class="pnb-kpi__value">~14 un./mes</div></div>
+            </div>
+          </div>
+
+          <div class="pnb-section__title">Plan mensual 2026 — 12 meses</div>
+          <div class="pnb-timeline__rail">
+            ${mesesData.map(m => `
+            <div class="pnb-timeline__month">
+              <div class="pnb-timeline__month-head">${m.label} 2026</div>
+              <div class="pnb-timeline__month-body">
+                <div class="pnb-timeline__month-row"><span class="k">Ventas</span><span class="v">${fmtK(m.ventas)}</span></div>
+                <div class="pnb-timeline__month-row"><span class="k">Unidades</span><span class="v">${m.unid}</span></div>
+                <div class="pnb-timeline__month-row"><span class="k">Cobranza</span><span class="v">${fmtK(m.cobranza)}</span></div>
+                <div class="pnb-timeline__month-row"><span class="k">Egresos</span><span class="v">${fmtK(m.egresos)}</span></div>
+                <div class="pnb-timeline__month-row"><span class="k">Flujo mes</span><span class="v ${m.flujo >= 0 ? "pos" : "neg"}">${m.flujo >= 0 ? "" : "("}${fmtK(m.flujo)}${m.flujo >= 0 ? "" : ")"}</span></div>
+                <div class="pnb-timeline__month-row" style="border-top:1px solid var(--color-border); padding-top:6px; margin-top:6px;"><span class="k">Saldo acum.</span><span class="v">${fmtK(m.saldo)}</span></div>
+              </div>
+            </div>
+            `).join("")}
+          </div>
+
+          <div class="pnb-section">
+            <div class="pnb-section__title">Mix de ventas por segmento (año)</div>
+            <table class="pnb-table">
+              <thead><tr><th>Segmento</th><th class="r">Unidades</th><th class="r">m²</th><th class="r">Monto (miles)</th><th class="r">%</th></tr></thead>
+              <tbody>
+                ${mixVentas.map(s => `<tr><td>${escapeHtml(s.segmento)}</td><td class="r">${s.unidades}</td><td class="r">${fmtK(s.m2)}</td><td class="r">${fmtK(s.monto)}</td><td class="r">${s.pct}%</td></tr>`).join("")}
+                <tr class="total"><td>Total</td><td class="r">167</td><td class="r">31,200</td><td class="r">${fmtK(totalVentasBrutas)}</td><td class="r">100%</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pnb-section">
+            <div class="pnb-section__title">Estado de resultados y flujo anual resumido</div>
+            <div class="grid-2" style="gap:var(--sp-16);">
+              <table class="pnb-table">
+                <tbody>
+                  <tr><td>Ventas brutas</td><td class="r">${fmtK(totalVentasBrutas)}</td></tr>
+                  <tr><td>(-) Part. aportante tierra</td><td class="r">(${fmtK(participacionAportante)})</td></tr>
+                  <tr class="total"><td>= Ventas netas</td><td class="r">${fmtK(ventasNetas)}</td></tr>
+                  <tr><td>(-) Costos y gastos</td><td class="r">(${fmtK(costoConstruccion+urbanizacion+comisiones+costosFinancieros+gastosOperacion+developerFee)})</td></tr>
+                  <tr class="total"><td>= Utilidad neta</td><td class="r">${fmtK(utilidadNeta)}</td></tr>
+                </tbody>
+              </table>
+              <table class="pnb-table">
+                <tbody>
+                  <tr><td>Saldo inicial</td><td class="r">${fmtK(saldoInicial)}</td></tr>
+                  <tr><td>Cobranza total</td><td class="r">${fmtK(cobranza)}</td></tr>
+                  <tr><td>(-) Egresos totales</td><td class="r">(${fmtK(egresosOp)})</td></tr>
+                  <tr><td>(+) Crédito puente</td><td class="r">${fmtK(ingresoPuente)}</td></tr>
+                  <tr><td>(-) Amort. puente</td><td class="r">(${fmtK(amortPuente)})</td></tr>
+                  <tr class="total"><td>Saldo final</td><td class="r">${fmtK(saldoFinal)}</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="pnb-timeline__foot">
+            <div>
+              <div class="pnb-section__title">Premisas financieras</div>
+              <table class="pnb-table">
+                <tbody>${premisas.map(pr => `<tr><td>${escapeHtml(pr.k)}</td><td class="r">${escapeHtml(pr.v)}</td></tr>`).join("")}</tbody>
+              </table>
+            </div>
+            <div>
+              <div class="pnb-section__title">Riesgos y oportunidades</div>
+              <div class="pnb-risks">
+                <div class="card" style="padding:var(--sp-12);">
+                  <strong class="small">Riesgos</strong>
+                  <ul class="small muted" style="margin:6px 0 0 14px; padding:0;"> Presión márgenes, dependencia financiamiento, concentración producto.</ul>
+                </div>
+                <div class="card" style="padding:var(--sp-12);">
+                  <strong class="small">Oportunidades</strong>
+                  <ul class="small muted" style="margin:6px 0 0 14px; padding:0;"> Demanda lotes/comercial, plusvalía, precierre fase 3.</ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+        return;
+      }
+
+      /* ----- Versiones ----- */
+      if(state.projectTab === "versiones"){
         tabBody.innerHTML = `
           <div class="card">
-            <h2>Plan de negocios</h2>
-            <div class="muted small">Contenido del plan de negocios del proyecto (prototipo).</div>
+            <h2>Versiones</h2>
+            <div class="muted small">Historial y versiones del proyecto (prototipo).</div>
+            <div class="divider"></div>
+            <div class="muted">Módulo en construcción.</div>
+          </div>
+        `;
+        return;
+      }
+
+      /* ----- Comparativa de Movimientos ----- */
+      if(state.projectTab === "comparativa-movimientos"){
+        tabBody.innerHTML = `
+          <div class="card">
+            <h2>Comparativa de Movimientos</h2>
+            <div class="muted small">Comparativa de movimientos del proyecto (prototipo).</div>
             <div class="divider"></div>
             <div class="muted">Módulo en construcción.</div>
           </div>
@@ -2841,7 +3245,7 @@
               <div class="divider"></div>
               ${["Muy Alto","Alto","Medio","Bajo"].filter(imp => byImpact[imp].length > 0).map(imp => `
                 <div style="margin-bottom:12px;">
-                  <strong>${impactBadge(imp)}</strong>
+                  <strong>${escapeHtml(imp)}</strong>
                   <ul style="margin:4px 0 0 20px; padding:0;">
                     ${byImpact[imp].map(({ item }) => `<li>${escapeHtml(item.label)}</li>`).join("")}
                   </ul>
@@ -2921,7 +3325,7 @@
                 </div>
                 <div>
                   <div class="label">Estado</div>
-                  <div>${gateBadge(p.gateStatus)}</div>
+                  <div>${escapeHtml(p.gateStatus || "—")}</div>
                 </div>
               </div>
               <div class="divider"></div>
@@ -3060,14 +3464,13 @@
                 <input type="checkbox" ${c.done ? "checked":""} onchange="toggleChecklist('${p.id}', ${idx}, this.checked)" />
                 <span>
                   <span>${escapeHtml(c.label)}</span>
-                  ${risk ? `<div class="muted small" style="margin-top:4px;" title="${escapeHtml(risk.consequence)}">${impactBadge(risk.impact)} &nbsp; ${escapeHtml(risk.consequence)}</div>` : ""}
+                  ${risk ? `<div class="muted small" style="margin-top:4px;" title="${escapeHtml(risk.consequence)}">${escapeHtml(risk.impact)} — ${escapeHtml(risk.consequence)}</div>` : ""}
                 </span>
               </span>
               <span style="display:flex; align-items:center; gap:8px;">
                 <input type="file" style="position:absolute; opacity:0; width:0; height:0;" id="cl-f-${p.id}-${idx}" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.png,.jpg,.jpeg" onchange="setChecklistFile('${p.id}', ${idx}, this)" />
                 <label for="cl-f-${p.id}-${idx}" class="btn btn-outline" style="padding:5px 10px; font-size:var(--fs-12); cursor:pointer; margin:0; white-space:nowrap;" title="Cargar archivo">Cargar archivo</label>
                 ${c.file ? `<span class="muted small" style="max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${escapeHtml(c.file)}">${escapeHtml(c.file)}</span>` : ""}
-                ${c.done ? badge("success","Listo") : badge("info","Pendiente")}
               </span>
             </label>
           `}).join("")}
@@ -3084,16 +3487,12 @@
     function renderModelRow(p, key, stageLabel){
       const item = p.models[key];
       const status = item?.status ?? "N/A";
-      const kind =
-        status.includes("Complet") || status==="Activo" ? "success" :
-        status.includes("En progreso") ? "info" :
-        status.includes("Pend") ? "warn" : "";
 
       return `
         <tr>
           <td>${escapeHtml(stageLabel)}</td>
           <td><b>${escapeHtml(item?.name ?? "N/A")}</b></td>
-          <td>${badge(kind, status)}</td>
+          <td>${escapeHtml(status)}</td>
           <td>
             <div class="t-actions">
               <button class="btn btn-outline" onclick="cycleModelStatus('${p.id}','${key}')">Cambiar estado</button>
@@ -3160,7 +3559,7 @@
             <div style="margin-top:8px; padding:10px; background:var(--color-bg-soft); border-radius:var(--radius-md); border:1px solid var(--color-border);">
               ${openRisksGate.map(({ item, risk }) => `
                 <div style="margin-bottom:8px;">
-                  <span>${impactBadge(risk.impact)}</span>
+                  <span>${escapeHtml(risk.impact)}</span>
                   <strong style="font-size:var(--fs-12);">${escapeHtml(item.label)}</strong>
                   <div class="muted small" style="margin-left:24px; margin-top:2px;">${escapeHtml(risk.consequence)}</div>
                 </div>
